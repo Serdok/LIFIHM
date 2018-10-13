@@ -4,11 +4,9 @@
         <meta charset="utf-8" />
 
         <link rel="stylesheet" href="css/bootstrap.css"/>
-	<link rel="stylesheet" href="Style.css" />
+	<link rel="stylesheet" href="css/Style.css" />
 
 	<!-- <script src="js/bootstrap.js"> </script> -->
-	<script src="Script.js"> </script>
-
 		<title>Résurrection - Accueil</title>
 	</head>  
 	<body>    
@@ -20,50 +18,70 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li> <A HREF="#tableau">Tableau</a></li>
-					<li> <A HREF="#">Avis</a></li>
+					<li> <A HREF="#Avis">Avis</a></li>
 				</ul>
 			</div>
 		</nav>	
-
-		<H2>Lieux rescensés</H2>
-		<DIV id = "tableau">
-			<DIV class = "ligne">
-				<DIV class = "cellule">Nom</DIV>
-				<DIV class = "cellule">Type</DIV>
-				<DIV class = "cellule">Coordonnées GPS</DIV>
-				<DIV class = "cellule">Contact responsable</DIV>
-				<DIV class = "cellule">Objets acceptés</DIV>
+		<section>
+			<H2>Lieux rescensés</H2>
+			<DIV id = "tableau">
+				<DIV class = "ligne">
+					<DIV class = "cellule">Nom</DIV>
+					<DIV class = "cellule">Type</DIV>
+					<DIV class = "cellule">Coordonnées GPS</DIV>
+					<DIV class = "cellule">Contact responsable</DIV>
+					<DIV class = "cellule">Objets acceptés</DIV>
+				</DIV>
+				<DIV class = "ligne">
+					<DIV class = "cellule">Emmaüs Gratte-Ciel</DIV>
+					<DIV class = "cellule">Don</DIV>
+					<DIV class = "cellule">45° 45'09.7"N 4°52'31.6"E</DIV>
+					<DIV class = "cellule">04 28 38 24 96</DIV>
+					<DIV class = "cellule">Maroquinerie, Objets invendables, Petits meubles</DIV>
+					<IMG src = "./img/writing.png" class = "modify" onClick = "change(1)" />
+					<IMG src = "./img/minus.png" class = "delete" onClick = "remove(1)" />
+				</DIV>
+				<DIV class = "ligneajt">
+					<DIV class = "cellule">
+						<INPUT type = "text" name = "Nom" id = "Nom" required >
+						<P id = "CapsLock">Verr. Maj. activée.</P>
+					</DIV>
+					<DIV class = "cellule">
+						<INPUT type = "text" name = "Type" id = "Type" required >
+						<P id = "CapsLock">Verr. Maj. activée.</P>
+					</DIV>
+					<DIV class = "cellule">
+						<INPUT type = "text" name = "Coordonnees" id = "Coordonnees" required >
+						<P id = "CapsLock">Verr. Maj. activée.</P>
+					</DIV>
+					<DIV class = "cellule">
+						<INPUT type = "text" name = "Contact" id = "Contact" required >
+						<P id = "CapsLock">Verr. Maj. activée.</P>
+					</DIV>
+					<DIV class = "cellule">
+						<INPUT type = "text" name = "Objets" id = "Objets" required >
+						<P id = "CapsLock">Verr. Maj. activée.</P>
+					</DIV>
+					<IMG src = "./img/plus.png" class = "add" onClick = "add()" />
+				</DIV>
 			</DIV>
-			<DIV class = "ligne">
-				<DIV class = "cellule">Emmaüs Gratte-Ciel</DIV>
-				<DIV class = "cellule">Don</DIV>
-				<DIV class = "cellule">45° 45'09.7"N 4°52'31.6"E</DIV>
-				<DIV class = "cellule">04 28 38 24 96</DIV>
-				<DIV class = "cellule">Maroquinerie, Objets invendables, Petits meubles</DIV>
-				<BUTTON id = "ligne1" onClick="remove(1)">
-					<IMG src = "./delete.jpeg" class = "delete_button" />
-				</BUTTON>
-			</DIV>
-			<DIV class = "ligne">
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-			</DIV>
-			<DIV class = "ligne">
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-				<DIV class = "cellule"> </DIV>
-			</DIV>
-		</DIV>
+		</section>
+		<section id = "Avis">
+			<h2>Avis</h2>
+			<div class="Avis">
+				<img src="img/me.png" alt="Photo Donneur d'Avis" title="Photo Donneur d'Avis"> </img>
+				<p>
+					Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.
+					Une souris verte qui courrais dans l'herbe, je l'attrape par queu. Et puis je ne sais pas quoi dire après car je suis nul. Na na na na. Une souris verte etc...
+				</p>
+			</div>
+		</section>
     </body>
 
     <footer>
     	<div class="copyright">
-    		<p>Résurrection &copy; 2018</p>
+    		<p>Resurrection &copy; 2018</p>
     	</div>
     </footer>
+	<script src="js/Script.js"> </script>
 </html>

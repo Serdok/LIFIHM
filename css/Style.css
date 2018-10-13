@@ -25,48 +25,114 @@
 	padding: 10px;
 }
 
-.delete_button
+/*Debut modif*/
+body
 {
-	width: 2rem;
-	height: 2rem;
-	
+	margin: 0px;
 }
-
 footer
 {
-	display: block;
-	position: absolute;
-	bottom: 0;
 	background-color: #AFAFAF;
 	border-bottom: none;
 	border-radius-bottom: 0px;
 	border-radius-top: 10px;
 	padding: 25px 0 15px 0;
 	line-height: 24px;
-	margin: -10px;
-	margin-bottom: 0px;
 	width: 100%;
 	height: auto;
 }
 
 nav
 {
+	position: absolute;
 	width: 75%;
-	margin: 20px 0px 20px 0px;
+	margin-top-bottom: 20px;
+	margin: auto;
+	border-radius: 15px;
+	background-color: #D9DCE2;
 }
 
 h1
 {
-	text-align: center;;
+	text-align: center;
 	color: blue;
 	font-family: "Comic sans Ms";
+	font-size: 60px;
+	margin-bottom: 10px;
+	margin-top: 0px;
 }
 
+h2
+{
+	font-size: 40px;
+	font-weight: bold;
+	font-family: "Marker Felt",Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif ;
+}
+nav div
+{
+	width: auto;
+    display: flex;
+   	justify-content: space-around;
+}
+
+nav div a
+{
+	background-color: #8CA5E9;
+	color: #113595;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+section
+{
+	padding: 5%;
+	margin: 3%;
+	padding-top: 10px;
+	border: 10px double #D24444;
+	box-shadow: 20px 20px 5px #A82E2E;
+	border-radius: 20px;
+}
+
+.Avis
+{
+	background-color: #E3E3E3;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top-bottom: 10px; 
+	padding: 10px;
+	height: auto;
+	border-radius: 10px;
+	font-size: 20px;
+	height: 290px;
+  overflow: auto;
+	
+}
+
+.Avis img
+{
+	padding: 30px;
+	width: 270px;
+	margin: auto;
+	vertical-align: middle;
+	float: left;
+}
 .copyright
 {
-	color: #434854;
 	font-style: italic;
 	text-align: center;
 	position: center;
 	margin: auto;
+	color : black;
+}
+/*fin modif*/
+
+.roundedImage
+{
+    overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:90px;
+    height:90px;
 }
