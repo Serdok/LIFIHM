@@ -1,6 +1,6 @@
 #tableau
 {
-	width: 90%;
+	width: 70%;
 	height: auto;
 	border: 10px groove red;
 	margin: 0px auto;
@@ -12,7 +12,7 @@
 	display: table-row;
 }
 
-.cellule
+.cellule, .cellule_image
 {
 	background-color: white;
 	border: 1px solid black;
@@ -25,7 +25,20 @@
 	padding: 10px;
 }
 
-/*Debut modif*/
+.cellule_image
+{
+	display: flex;
+	flex-direction : column;
+	justify-content: space-around;
+	border:none;
+	height: 100px;
+}
+
+.btn
+{
+	margin: 10px 0 25px 0;
+}
+
 body
 {
 	margin: 0px;
@@ -52,6 +65,16 @@ nav
 	background-color: #D9DCE2;
 }
 
+.nav-pills
+{
+	padding: 15px 0 15px 0;
+}
+
+.nav-pills li
+{
+	padding: 0px 10px 0px 10px;
+}
+ 
 h1
 {
 	text-align: center;
@@ -125,7 +148,6 @@ section
 	margin: auto;
 	color : black;
 }
-/*fin modif*/
 
 .roundedImage
 {
