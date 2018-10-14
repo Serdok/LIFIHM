@@ -7,21 +7,17 @@
 	display: table;
 }
 
-.ligne, .ligneajt
+.ligne, .ligneajt, .lignemdf
 {
 	display: table-row;
 }
 
-<<<<<<< HEAD
 input
 {
 	width: 10rem;
 }
 
 .cellule, .cellule_image, .autocomplete
-=======
-.cellule, .cellule_image
->>>>>>> f6409d3859a540f501025bb7adb72fd978508a68
 {
 	background-color: white;
 	border: 1px solid black;
@@ -34,16 +30,21 @@ input
 	padding: 10px;
 }
 
+.add, .delete, .done, .modify
+{
+	height: 60%;
+	padding: 10px 0px 10px 0px;
+}
+
 .cellule_image
 {
 	display: flex;
 	flex-direction : column;
 	justify-content: space-around;
-	border:none;
+	border: none;
 	height: 100px;
 }
 
-<<<<<<< HEAD
 .autocomplete
 {
 	position: relative;
@@ -82,8 +83,6 @@ input
 	color: #FFFFFF;
 }
 
-=======
->>>>>>> f6409d3859a540f501025bb7adb72fd978508a68
 .btn
 {
 	margin: 10px 0 25px 0;

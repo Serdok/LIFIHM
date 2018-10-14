@@ -1,5 +1,4 @@
 var tableau = document.getElementById( "tableau" );
-var lignes = document.getElementsByClassName( "ligne" );
 
 var types = ["Don", "Dépôt vente", "Déchetterie"];
 var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electroménager", "Loisirs", "Meubles", "Multimédia", "Puériculture", "Végétaux"];
@@ -7,7 +6,7 @@ var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electrom
 
 function getACTIVEligne (ligne) // Retourne le numéro de la ligne cliquée
 {
-	var parent = ligne.parentElement.parentElement;
+	var parent = ligne.parentNode.parentNode;
 	var i = 0;
 	while (parent.previousElementSibling != null)
 	{
@@ -21,15 +20,64 @@ function getACTIVEligne (ligne) // Retourne le numéro de la ligne cliquée
 function remove (ligne) // Supprime une ligne
 {
 	var nb = getACTIVEligne( ligne );
-
-	
+	tableau.removeChild( ligne.parentNode.parentNode );
 
 	alert( "Ligne " + nb + " supprimée!" );
 }
 
 function modify (ligne) // Modifie une ligne du tableau
 {
+	var parent = ligne.parentNode.parentNode;
+	var fils = parent.children;
 	var nb = getACTIVEligne( ligne );
+
+	if (parent.className == "ligne")
+	{
+console.log( "Modification de la ligne " + nb + " activée" );
+		var formulaire, cellule, cellule_image;
+		formulaire = document.createElement( "form" );
+		formulaire.setAttribute( "class", "lignemdf" );
+		formulaire.setAttribute( "autocomplete", "off" );
+
+		for (var i = 0; i < fils.length - 1; i++)
+		{
+			cellule = document.createElement( "div" );
+			cellule.setAttribute( "class", "cellule" );
+			cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' >";
+			formulaire.appendChild( cellule );
+		}
+		cellule_image = document.createElement( "div" );
+		cellule_image.setAttribute( "class", "cellule_image" );
+		cellule_image.innerHTML = "<img src = './img/check.png' class = 'done' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png' class = 'delete' onClick = 'remove( this )'/>";
+		formulaire.appendChild( cellule_image );
+
+		tableau.replaceChild( formulaire, parent );
+	}
+	else if (parent.className == "lignemdf")
+	{
+console.log( "Enregistrement des modifications de la ligne " + nb );
+		var inputs = parent.getElementsByTagName( "input" );
+		var modifications, cellule, cellule_image;
+		modifications = document.createElement( "div" );
+		modifications.setAttribute( "class", "ligne" );
+
+		for (var i = 0; i < fils.length - 1; i++)
+		{
+			cellule = document.createElement( "div" );
+			cellule.setAttribute( "class", "cellule" );
+			if (inputs[i].value == "")
+				cellule.innerHTML = inputs[i].placeholder;
+			else
+				cellule.innerHTML = inputs[i].value;
+			modifications.appendChild( cellule );
+		}
+		cellule_image = document.createElement( "div" );
+		cellule_image.setAttribute( "class", "cellule_image" );
+		cellule_image.innerHTML = "<img src = './img/writing.png' class = 'modify' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png' class = 'delete' onClick = 'remove( this )'/>";
+		modifications.appendChild( cellule_image );
+
+		tableau.replaceChild( modifications, parent );
+	}
 
 	alert( "Ligne " + nb + " modifiée!" );
 }
@@ -57,7 +105,7 @@ function autocompletion (input, array) // Gère l'autocomplétion du champ input
 			{
 				b = document.createElement( "div" );
 				b.innerHTML = "<p>" + array[i] + "</p>";
-				b.innerHTML += "<input type = \"hidden\" value = \"" + array[i] + "\">";
+				b.innerHTML += "<input type = 'hidden' value = '" + array[i] + "'>";
 				b.addEventListener( "click", function (e)
 				{
 					input.value = this.getElementsByTagName( "input" )[0].value;
@@ -88,7 +136,7 @@ function autocompletion (input, array) // Gère l'autocomplétion du champ input
 				b = document.createElement( "div" );
 				b.innerHTML = "<strong>" + array[i].substr( 0, value.length ) + "</strong>";
 				b.innerHTML += array[i].substr( value.length );
-				b.innerHTML += "<input type = \"hidden\" value = \"" + array[i] + "\">";
+				b.innerHTML += "<input type = 'hidden' value = '" + array[i] + "'>";
 				b.addEventListener( "click", function (e)
 				{
 					input.value = this.getElementsByTagName( "input" )[0].value;
@@ -100,7 +148,7 @@ function autocompletion (input, array) // Gère l'autocomplétion du champ input
 			{
 				b = document.createElement( "div" );
 				b.innerHTML = "<p>" + array[i] + "</p>";
-				b.innerHTML += "<input type = \"hidden\" value = \"" + array[i] + "\">";
+				b.innerHTML += "<input type = 'hidden' value = '" + array[i] + "'>";
 				b.addEventListener( "click", function (e)
 				{
 					input.value = this.getElementsByTagName( "input" )[0].value;
@@ -171,9 +219,9 @@ function autocompletion (input, array) // Gère l'autocomplétion du champ input
 	});
 }
 
-function add () // Ajoute une ligne à la fin du tableau
+function add (ligne) // Ajoute une ligne à la fin du tableau
 {
-	var inputs = document.getElementsByTagName( "input" );
+	var inputs = ligne.parentNode.parentNode.getElementsByTagName( "input" );
 	for (var i = 0; i < inputs.length; i++)
 	{
 		if (inputs[i].value == "")
@@ -185,7 +233,7 @@ function add () // Ajoute une ligne à la fin du tableau
 		}
 	}
 
-	var nb_lignes = lignes.length - 1;
+	var nb_lignes = tableau.children.length - 1;
 	var ligneajt = document.createElement( "div" );
 	ligneajt.setAttribute( "class", "ligne" );
 	tableau.insertBefore( ligneajt, tableau.lastElementChild );
@@ -200,7 +248,7 @@ function add () // Ajoute une ligne à la fin du tableau
 	}
 	cellule_image = document.createElement( "div" );
 	cellule_image.setAttribute( "class", "cellule_image" );
-	cellule_image.innerHTML = "<img src = \"./img/writing.png\" class = \"modify\" onClick = \"modify( this )\" style=\"height: 60%; padding: 10px 0px 10px 0px;\"/></br>\n\t\t\t\t\t\t\t<img src = \"./img/minus.png\" class = \"delete\" onClick = \"remove( this )\" style=\"height: 60%; padding: 10px 0px 10px 0px;\" />";
+	cellule_image.innerHTML = "<img src = './img/writing.png' class = 'modify' onClick = 'modify( this )' style='height: 60%; padding: 10px 0px 10px 0px;'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png' class = 'delete' onClick = 'remove( this )' style='height: 60%; padding: 10px 0px 10px 0px;' />";
 	ligneajt.appendChild( cellule_image );
 
 	alert( "Ligne ajoutée!" );
