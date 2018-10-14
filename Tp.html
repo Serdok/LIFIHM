@@ -2,9 +2,13 @@
 <html>
     <head>	
         <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/bootstrap.css"/>
-	<link rel="stylesheet" href="css/Style.css" />
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/Style.css" />
 
 	<!-- <script src="js/bootstrap.js"> </script> -->
 		<title>Résurrection - Accueil</title>
@@ -16,56 +20,66 @@
 
 		<nav class="navbar navbar-default nav-stracke">
 			<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<li> <A HREF="#tableau">Tableau</a></li>
-					<li> <A HREF="#Avis">Avis</a></li>
+				<ul class="nav nav-pills" role="tablist">
+					<li> <a href="#Tableau">Tableau</a></li>
+					<li> <a href="#Recherche">Recherche</a></li>
+					<li> <a href="#Avis">Avis</a></li>
 				</ul>
 			</div>
 		</nav>	
-		<section>
+		<section id = "Tableau">
 			<H2>Lieux rescensés</H2>
-			<DIV id = "tableau">
-				<DIV class = "ligne">
-					<DIV class = "cellule">Nom</DIV>
-					<DIV class = "cellule">Type</DIV>
-					<DIV class = "cellule">Coordonnées GPS</DIV>
-					<DIV class = "cellule">Contact responsable</DIV>
-					<DIV class = "cellule">Objets acceptés</DIV>
-				</DIV>
-				<DIV class = "ligne">
-					<DIV class = "cellule">Emmaüs Gratte-Ciel</DIV>
-					<DIV class = "cellule">Don</DIV>
-					<DIV class = "cellule">45° 45'09.7"N 4°52'31.6"E</DIV>
-					<DIV class = "cellule">04 28 38 24 96</DIV>
-					<DIV class = "cellule">Maroquinerie, Objets invendables, Petits meubles</DIV>
-					<IMG src = "./img/writing.png" class = "modify" onClick = "change(1)" />
-					<IMG src = "./img/minus.png" class = "delete" onClick = "remove(1)" />
-				</DIV>
-				<DIV class = "ligneajt">
-					<DIV class = "cellule">
-						<INPUT type = "text" name = "Nom" id = "Nom" required >
-						<P id = "CapsLock">Verr. Maj. activée.</P>
-					</DIV>
-					<DIV class = "cellule">
-						<INPUT type = "text" name = "Type" id = "Type" required >
-						<P id = "CapsLock">Verr. Maj. activée.</P>
-					</DIV>
-					<DIV class = "cellule">
-						<INPUT type = "text" name = "Coordonnees" id = "Coordonnees" required >
-						<P id = "CapsLock">Verr. Maj. activée.</P>
-					</DIV>
-					<DIV class = "cellule">
-						<INPUT type = "text" name = "Contact" id = "Contact" required >
-						<P id = "CapsLock">Verr. Maj. activée.</P>
-					</DIV>
-					<DIV class = "cellule">
-						<INPUT type = "text" name = "Objets" id = "Objets" required >
-						<P id = "CapsLock">Verr. Maj. activée.</P>
-					</DIV>
-					<IMG src = "./img/plus.png" class = "add" onClick = "add()" />
-				</DIV>
-			</DIV>
+			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#tableau_collapse">
+					Afficher/Cacher le tableau
+			</button>
+			<div id="tableau_collapse" class="collapse_in">
+				<div id = "tableau">
+					<div class = "ligne">
+						<div class = "cellule">Nom</div>
+						<div class = "cellule">Type</div>
+						<div class = "cellule">Coordonnées GPS</div>
+						<div class = "cellule">Contact responsable</div>
+						<div class = "cellule">Objets acceptés</div>
+					</div>
+					<div class = "ligne">
+						<div class = "cellule">Emmaüs</div>
+						<div class = "cellule">Don</div>
+						<div class = "cellule">45° 45'09.7" N 4°52'31.6" E</div>
+						<div class = "cellule">04 28 38 24 96</div>
+						<div class = "cellule">Maroquinerie, Objets invendables, Petits meubles</div>
+						<div class = "cellule_image">
+							<img src = "./img/writing.png" class = "modify" onClick = "modify( this )" style="height: 60%; padding: 10px 0px 10px 0px;"/></br>
+							<img src = "./img/minus.png" class = "delete" onClick = "remove( this )" style="height: 60%; padding: 10px 0px 10px 0px;" />
+						</div>
+					</div>
+					<form class = "ligneajt" autocomplete = "off">
+						<div class = "cellule">
+							<input type = "text" name = "Nom" placeholder = "Nom">
+						</div>
+						<div class = "autocomplete">
+							<input type = "text" name = "Type" placeholder = "Type" onFocus = "autocompletion( this, types )">
+						</div>
+						<div class = "cellule">
+							<input type = "text" name = "Coordonnees" placeholder = "Coordonnees">
+						</div>
+						<div class = "cellule">
+							<input type = "text" name = "Contact" placeholder = "Contact">
+						</div>
+						<div class = "autocomplete">
+							<input type = "text" name = "Objets" placeholder = "Objets" onFocus = "autocompletion( this, objets )">
+						</div>
+						<div class = "cellule_image">
+							<img src = "./img/plus.png" class = "add" onClick = "add()" style = "height: 60%; padding: 10px 0px 10px 0px;" />
+						</div>
+					</form>
+				</div>
+			</div>
 		</section>
+		
+		<section id = "Recherche">
+			<h2>Recherche</h2>
+		</section>
+		
 		<section id = "Avis">
 			<h2>Avis</h2>
 			<div class="Avis">
@@ -76,6 +90,7 @@
 				</p>
 			</div>
 		</section>
+		
     </body>
 
     <footer>

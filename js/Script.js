@@ -1,53 +1,209 @@
-var menu = document.querySelector( "nav" );
-var tableau = document.querySelector( "div#tableau" );
+var tableau = document.getElementById( "tableau" );
+var lignes = document.getElementsByClassName( "ligne" );
 
-var nom = document.getElementById( "Nom" );
-var type = document.getElementById( "Type" );
-var coordonnees = document.getElementById( "Coordonnees" );
-var contact = document.getElementById( "Contact" );
-var objets = document.getElementById( "Objets" );
-var tabID = [nom, type, coordonnees, contact, objets];
+var types = ["Don", "Dépôt vente", "Déchetterie"];
+var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electroménager", "Loisirs", "Meubles", "Multimédia", "Puériculture", "Végétaux"];
 
-var nblines = 1;
 
-document.onkeydown = function (e)
+function getACTIVEligne (ligne) // Retourne le numéro de la ligne cliquée
 {
-	e = e || window.event;
-	isCapsLockOn( e );
-}
-
-function isCapsLockOn (e)
-{
-	var warning_text = document.getElementById( "CapsLock" );
-	var capsOn = false;
-	if (e.CapsLock)
+	var parent = ligne.parentElement.parentElement;
+	var i = 0;
+	while (parent.previousElementSibling != null)
 	{
-		warning_text.style.display = "block";
-		alert( "Touche Caps pressée" );
+		parent = parent.previousElementSibling;
+		i++;
 	}
+
+	return i;
 }
 
-function repli () // Replie le tableau
+function remove (ligne) // Supprime une ligne
 {
+	var nb = getACTIVEligne( ligne );
+
 	
+
+	alert( "Ligne " + nb + " supprimée!" );
+}
+
+function modify (ligne) // Modifie une ligne du tableau
+{
+	var nb = getACTIVEligne( ligne );
+
+	alert( "Ligne " + nb + " modifiée!" );
+}
+
+function autocompletion (input, array) // Gère l'autocomplétion du champ input avec les données array
+{
+	var focus;
+
+	input.addEventListener( "focus", function (e) // Changement de valeur
+	{
+		var a, b, i, value = this.value;
+//		closeOtherAutocompletion();
+
+		focus = -1;
+
+		a = document.createElement( "div" );
+		a.setAttribute( "id", this.id + "autocomplete-list" );
+		a.setAttribute( "class", "autocomplete-items" );
+		this.parentNode.appendChild( a );
+
+		
+		for (i = 0; i < array.length; i++)
+		{
+			if (value == "")
+			{
+				b = document.createElement( "div" );
+				b.innerHTML = "<p>" + array[i] + "</p>";
+				b.innerHTML += "<input type = \"hidden\" value = \"" + array[i] + "\">";
+				b.addEventListener( "click", function (e)
+				{
+					input.value = this.getElementsByTagName( "input" )[0].value;
+					closeOtherAutocompletion();
+				});
+				a.appendChild( b );
+			}
+		}
+	});
+
+	input.addEventListener( "input", function (e) // Changement de valeur
+	{
+		var a, b, i, value = this.value;
+//		closeOtherAutocompletion();
+
+		focus = -1;
+
+		a = document.createElement( "div" );
+		a.setAttribute( "id", this.id + "autocomplete-list" );
+		a.setAttribute( "class", "autocomplete-items" );
+		this.parentNode.appendChild( a );
+
+		
+		for (i = 0; i < array.length; i++)
+		{
+			if (array[i].substr( 0, value.length ).toUpperCase() == value.toUpperCase())
+			{
+				b = document.createElement( "div" );
+				b.innerHTML = "<strong>" + array[i].substr( 0, value.length ) + "</strong>";
+				b.innerHTML += array[i].substr( value.length );
+				b.innerHTML += "<input type = \"hidden\" value = \"" + array[i] + "\">";
+				b.addEventListener( "click", function (e)
+				{
+					input.value = this.getElementsByTagName( "input" )[0].value;
+					closeOtherAutocompletion();
+				});
+				a.appendChild( b );
+			}
+			else if (value == "")
+			{
+				b = document.createElement( "div" );
+				b.innerHTML = "<p>" + array[i] + "</p>";
+				b.innerHTML += "<input type = \"hidden\" value = \"" + array[i] + "\">";
+				b.addEventListener( "click", function (e)
+				{
+					input.value = this.getElementsByTagName( "input" )[0].value;
+					closeOtherAutocompletion();
+				});
+				a.appendChild( b );
+			}
+		}
+	});
+
+
+	input.addEventListener( "keydown", function (e)
+	{
+		var x = document.getElementById( this.id + "autocomplete-list" );
+		if (x)
+			x = x.getElementsByTagName( "div" );
+
+		if (e.keyCode == 40) // Flèche du bas
+		{
+			focus++;
+			addActive( x );
+		}
+		else if (e.keyCode == 38) // Flèche du haut
+		{
+			focus--;
+			addActive( x );
+		}
+		else if (e.keyCode == 13) // Touche Entrer, permet d'empêcher l'envoi du formulaire
+		{
+			e.preventDefault();
+			if (focus > -1)
+				if (x)
+					x[focus].click();
+		}
+	});
+
+	function addActive (x) // Classifie un objet en tant qu'actif
+	{
+		if (!x)
+			return false;
+
+		removeActive( x );
+		if (focus >= x.length)
+			focus = 0;
+		if (focus < 0)
+			focus = x.length - 1;
+
+		x[focus].classList.add( "autocomplete-active" );
+	}
+
+	function removeActive (x) // Déclassifie un objet actif
+	{
+		for (var i = 0; i < x.length; i++)
+			x[i].classList.remove( "autocomplete-active" );
+	}
+
+	function closeOtherAutocompletion (element) // Ferme les autres autocomplétions, sauf celui passé en paramètre
+	{
+		var x = document.getElementsByClassName( "autocomplete-items" );
+		for (var i = 0; i < x.length ; i++)
+			if (element != x[i] && element != input)
+				x[i].parentNode.removeChild( x[i] );
+	}
+
+	document.addEventListener( "click", function (e) // Ajout d'un évènement si l'utilisateur clique sur la page
+	{
+		closeOtherAutocompletion( e.target );
+	});
 }
 
 function add () // Ajoute une ligne à la fin du tableau
 {
+	var inputs = document.getElementsByTagName( "input" );
+	for (var i = 0; i < inputs.length; i++)
+	{
+		if (inputs[i].value == "")
+		{
+			console.log( inputs[i].name + " a son champ vide!" );
+			alert( "Merci de compléter le champ " + inputs[i].name + " avant d'ajouter cette ligne!" );
+			inputs[i].focus();
+			return false;
+		}
+	}
+
+	var nb_lignes = lignes.length - 1;
+	var ligneajt = document.createElement( "div" );
+	ligneajt.setAttribute( "class", "ligne" );
+	tableau.insertBefore( ligneajt, tableau.lastElementChild );
+
+	var cellule, cellule_image;
+	for (var i = 0; i < inputs.length; i++)
+	{
+		cellule = document.createElement( "div" );
+		cellule.setAttribute( "class", "cellule" );
+		cellule.innerHTML = inputs[i].value;
+		ligneajt.appendChild( cellule );
+	}
+	cellule_image = document.createElement( "div" );
+	cellule_image.setAttribute( "class", "cellule_image" );
+	cellule_image.innerHTML = "<img src = \"./img/writing.png\" class = \"modify\" onClick = \"modify( this )\" style=\"height: 60%; padding: 10px 0px 10px 0px;\"/></br>\n\t\t\t\t\t\t\t<img src = \"./img/minus.png\" class = \"delete\" onClick = \"remove( this )\" style=\"height: 60%; padding: 10px 0px 10px 0px;\" />";
+	ligneajt.appendChild( cellule_image );
 
 	alert( "Ligne ajoutée!" );
-}
-
-function remove (line) // Supprime une ligne
-{
-
-	alert( "Ligne " + line + " supprimée!" );
-}
-
-function change (line) // Modifie une ligne du tableau
-{
-	
-	alert( "Ligne " + line + " modifiée!" );
 }
 
 function research () // Recherche un lieu précis

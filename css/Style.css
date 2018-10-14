@@ -1,18 +1,23 @@
 #tableau
 {
-	width: 90%;
+	width: 70%;
 	height: auto;
 	border: 10px groove red;
 	margin: 0px auto;
 	display: table;
 }
 
-.ligne
+.ligne, .ligneajt
 {
 	display: table-row;
 }
 
-.cellule
+input
+{
+	width: 10rem;
+}
+
+.cellule, .cellule_image, .autocomplete
 {
 	background-color: white;
 	border: 1px solid black;
@@ -25,7 +30,58 @@
 	padding: 10px;
 }
 
-/*Debut modif*/
+.cellule_image
+{
+	display: flex;
+	flex-direction : column;
+	justify-content: space-around;
+	border:none;
+	height: 100px;
+}
+
+.autocomplete
+{
+	position: relative;
+}
+
+/* position de la boîte d'autocomplétion, tu peux changer les valeurs si tu veux */
+.autocomplete-items
+{
+	position: absolute;
+	border: 1px solid #D4D4D4;
+	border-top: none;
+	border-bottom: none;
+	z-index: 99;
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+
+.autocomplete-items div
+{
+	padding: 10px;
+	cursor: pointer;
+	background-color: #FFF;
+	border-bottom: 1px solid #D4D4D4;
+}
+
+.autocomplete-items div:hover
+{
+	background-color: #E9E9E9;
+}
+
+/* Si on utilise les touches fléchées */
+.autocomplete-active
+{
+	background-color: DodgerBlue !important;
+	color: #FFFFFF;
+}
+
+.btn
+{
+	margin: 10px 0 25px 0;
+}
+
 body
 {
 	margin: 0px;
@@ -52,6 +108,16 @@ nav
 	background-color: #D9DCE2;
 }
 
+.nav-pills
+{
+	padding: 15px 0 15px 0;
+}
+
+.nav-pills li
+{
+	padding: 0px 10px 0px 10px;
+}
+ 
 h1
 {
 	text-align: center;
@@ -125,7 +191,6 @@ section
 	margin: auto;
 	color : black;
 }
-/*fin modif*/
 
 .roundedImage
 {
