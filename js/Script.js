@@ -43,7 +43,19 @@ console.log( "Modification de la ligne " + nb + " activée" );
 		{
 			cellule = document.createElement( "div" );
 			cellule.setAttribute( "class", "cellule" );
-			cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' >";
+			switch (tableau.children[0].children[i].innerHTML)
+			{
+				case "Type":
+					cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' list = 'types'/>";
+					break;
+
+				case "Objets acceptés":
+					cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' list = 'objets'/>";
+					break;
+
+				default:
+					cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' >";
+			}
 			formulaire.appendChild( cellule );
 		}
 		cellule_image = document.createElement( "div" );
@@ -77,146 +89,9 @@ console.log( "Enregistrement des modifications de la ligne " + nb );
 		modifications.appendChild( cellule_image );
 
 		tableau.replaceChild( modifications, parent );
+
+		alert( "Ligne " + nb + " modifiée!" );
 	}
-
-	alert( "Ligne " + nb + " modifiée!" );
-}
-
-function autocompletion (input, array) // Gère l'autocomplétion du champ input avec les données array
-{
-	var focus;
-
-	input.addEventListener( "focus", function (e) // Changement de valeur
-	{
-		var a, b, i, value = this.value;
-//		closeOtherAutocompletion();
-
-		focus = -1;
-
-		a = document.createElement( "div" );
-		a.setAttribute( "id", this.id + "autocomplete-list" );
-		a.setAttribute( "class", "autocomplete-items" );
-		this.parentNode.appendChild( a );
-
-		
-		for (i = 0; i < array.length; i++)
-		{
-			if (value == "")
-			{
-				b = document.createElement( "div" );
-				b.innerHTML = "<p>" + array[i] + "</p>";
-				b.innerHTML += "<input type = 'hidden' value = '" + array[i] + "'>";
-				b.addEventListener( "click", function (e)
-				{
-					input.value = this.getElementsByTagName( "input" )[0].value;
-					closeOtherAutocompletion();
-				});
-				a.appendChild( b );
-			}
-		}
-	});
-
-	input.addEventListener( "input", function (e) // Changement de valeur
-	{
-		var a, b, i, value = this.value;
-//		closeOtherAutocompletion();
-
-		focus = -1;
-
-		a = document.createElement( "div" );
-		a.setAttribute( "id", this.id + "autocomplete-list" );
-		a.setAttribute( "class", "autocomplete-items" );
-		this.parentNode.appendChild( a );
-
-		
-		for (i = 0; i < array.length; i++)
-		{
-			if (array[i].substr( 0, value.length ).toUpperCase() == value.toUpperCase())
-			{
-				b = document.createElement( "div" );
-				b.innerHTML = "<strong>" + array[i].substr( 0, value.length ) + "</strong>";
-				b.innerHTML += array[i].substr( value.length );
-				b.innerHTML += "<input type = 'hidden' value = '" + array[i] + "'>";
-				b.addEventListener( "click", function (e)
-				{
-					input.value = this.getElementsByTagName( "input" )[0].value;
-					closeOtherAutocompletion();
-				});
-				a.appendChild( b );
-			}
-			else if (value == "")
-			{
-				b = document.createElement( "div" );
-				b.innerHTML = "<p>" + array[i] + "</p>";
-				b.innerHTML += "<input type = 'hidden' value = '" + array[i] + "'>";
-				b.addEventListener( "click", function (e)
-				{
-					input.value = this.getElementsByTagName( "input" )[0].value;
-					closeOtherAutocompletion();
-				});
-				a.appendChild( b );
-			}
-		}
-	});
-
-
-	input.addEventListener( "keydown", function (e)
-	{
-		var x = document.getElementById( this.id + "autocomplete-list" );
-		if (x)
-			x = x.getElementsByTagName( "div" );
-
-		if (e.keyCode == 40) // Flèche du bas
-		{
-			focus++;
-			addActive( x );
-		}
-		else if (e.keyCode == 38) // Flèche du haut
-		{
-			focus--;
-			addActive( x );
-		}
-		else if (e.keyCode == 13) // Touche Entrer, permet d'empêcher l'envoi du formulaire
-		{
-			e.preventDefault();
-			if (focus > -1)
-				if (x)
-					x[focus].click();
-		}
-	});
-
-	function addActive (x) // Classifie un objet en tant qu'actif
-	{
-		if (!x)
-			return false;
-
-		removeActive( x );
-		if (focus >= x.length)
-			focus = 0;
-		if (focus < 0)
-			focus = x.length - 1;
-
-		x[focus].classList.add( "autocomplete-active" );
-	}
-
-	function removeActive (x) // Déclassifie un objet actif
-	{
-		for (var i = 0; i < x.length; i++)
-			x[i].classList.remove( "autocomplete-active" );
-	}
-
-	function closeOtherAutocompletion (element) // Ferme les autres autocomplétions, sauf celui passé en paramètre
-	{
-		var x = document.getElementsByClassName( "autocomplete-items" );
-		for (var i = 0; i < x.length ; i++)
-			if (element != x[i] && element != input)
-				x[i].parentNode.removeChild( x[i] );
-	}
-
-	document.addEventListener( "click", function (e) // Ajout d'un évènement si l'utilisateur clique sur la page
-	{
-		closeOtherAutocompletion( e.target );
-	});
 }
 
 function add (ligne) // Ajoute une ligne à la fin du tableau
