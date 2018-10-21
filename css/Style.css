@@ -145,10 +145,11 @@ nav button
 	display: none;
 }
 
-.menuTelephone
+.menuTelephone, .button_nav_tel
 {
 	display: none;
 	bakground: rgba(0, 0, 0, 0);
+	z-index: -50;
 }
 
 nav div

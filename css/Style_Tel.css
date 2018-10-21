@@ -105,7 +105,7 @@ footer
 	border-bottom: none;
 	border-radius-bottom: 0px;
 	border-radius-top: 10px;
-	padding: 25px 0 15px 0;
+	padding: 40px 0 15px 0;
 	line-height: 24px;
 	width: 100%;
 	height: auto;
@@ -133,6 +133,20 @@ h2
 	font-family: "Marker Felt",Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif ;
 }
 
+.button_nav_tel
+{
+	display:block;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 15;
+	background-color: rgba(0, 0, 0, 0);
+	text-align: right;
+	border: none rgba(0, 0, 0, 0);
+	height:10%;
+}
+
+
 .menuTelephone
 {
 	display:block;
@@ -145,27 +159,23 @@ h2
 	height: 100%;
 }
 
+
 .menuTelephone *
 {
 	background-color: rgba(0, 0, 0, 0);
 	border-color: rgba(0, 0, 0, 0);
 	text-align: right;
 }
-
-.menuTelephone button:hover, .menuTelephone button:focus
-{
-	background-color: rgba(0, 0, 0, 0);
-	border-color: rgba(0, 0, 0, 0);
-	box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
-}
-
 .div_nav_tel
 {
 	position: absolute;
 	bottom: 0px;
-	background-color: rgba(216, 216, 216, 0.75	);
+	background-color: rgba(216, 216, 216, 0.85	);
 	height: 90%;
 	text-align: center;
+	border-width: 5px 0px 0px 0px;
+	border-style: solid;
+	border-radius: 20px 20px 0px 0px;
 	width:100%;
 }
 
@@ -199,6 +209,22 @@ h2
 	text-align: center;
 	
 }
+
+.menuTelephone div .btn-info:hover, .menuTelephone div .btn-info:focus
+{
+	background-color: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+	box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+.list_nav_tel li a button
+{
+	font-size: 30px;
+	color: #122F7D;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 1);
+	
+}
 nav div a
 {
 }
@@ -208,6 +234,7 @@ section
 	padding: 5%;
 	margin: 3%;
 	padding-top: 10px;
+	margin-bottom: 25px;
 	border: 10px double #D24444;
 	box-shadow: 20px 20px 5px #A82E2E;
 	border-radius: 20px;
