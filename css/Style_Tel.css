@@ -88,9 +88,16 @@ input
 	margin: 10px 0 25px 0;
 }
 
+html
+{
+	margin: 0px;
+	height: 100%;
+}
+
 body
 {
 	margin: 0px;
+	height: 100%;
 }
 footer
 {
@@ -104,24 +111,9 @@ footer
 	height: auto;
 }
 
-nav
+.navbar
 {
-	position: absolute;
-	width: 75%;
-	margin-top-bottom: 20px;
-	margin: auto;
-	border-radius: 15px;
-	background-color: #D9DCE2;
-}
-
-.nav-pills
-{
-	padding: 15px 0 15px 0;
-}
-
-.nav-pills li
-{
-	padding: 0px 10px 0px 10px;
+    display:none;
 }
  
 h1
@@ -140,31 +132,75 @@ h2
 	font-weight: bold;
 	font-family: "Marker Felt",Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif ;
 }
-nav button
-{
-	display: none;
-}
 
 .menuTelephone
 {
-	display: none;
-	bakground: rgba(0, 0, 0, 0);
+	display:block;
+	position: fixed;
+	top: 10px;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0);
+	text-align: right;
+	width:100%;
+	height: 100%;
 }
 
-nav div
+.menuTelephone *
 {
-	width: auto;
-    display: flex;
-   	justify-content: space-around;
+	background-color: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+	text-align: right;
 }
 
+.menuTelephone button:hover, .menuTelephone button:focus
+{
+	background-color: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+	box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0);
+}
+
+.div_nav_tel
+{
+	position: absolute;
+	bottom: 0px;
+	background-color: rgba(216, 216, 216, 0.75	);
+	height: 90%;
+	text-align: center;
+	width:100%;
+}
+
+.list_nav_tel 
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(17, 53, 149);
+	font-family: sans-serif;
+	font-weight: 700;
+	line-height: 18.4px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	text-align: center;
+	text-decoration: none;
+	text-decoration-color: rgb(17, 53, 149);
+	text-decoration-line: none;
+	text-decoration-style: solid;
+}
+
+.list_nav_tel li
+{
+	font-size: 30px;
+	text-align: center;
+	
+}
 nav div a
 {
-	background-color: #8CA5E9;
-	color: #113595;
-	padding: 10px;
-	border-radius: 5px;
-	font-weight: bold;
 }
 
 section
@@ -217,9 +253,4 @@ section
     border-radius:50px;
     width:90px;
     height:90px;
-}
-
-.cellule_image img:hover
-{
-	opacity: 0.5;
 }
