@@ -128,6 +128,18 @@ function add (ligne) // Ajoute une ligne à la fin du tableau
 	alert( "Ligne ajoutée!" );
 }
 
+function recherche (ligne) // Recherche par nom d'abord
+{
+	var inputs = ligne.parentNode.parentNode.getElementsByTagName( "input" );
+	for (var nb = 0; nb < inputs.length; nb++)
+	{
+
+		alert( "Ligne " + nb );
+		
+	}
+	
+}
+
 function research () // Recherche un lieu précis
 {
 	
