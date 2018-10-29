@@ -87,6 +87,17 @@
 							<img src = "./img/minus.png" class = "delete" onClick = "remove( this )"/>
 						</div>
 					</div>
+					<div class = "ligne">
+						<div class = "cellule">mma</div>
+						<div class = "cellule">Dfdn</div>
+						<div class = "cellule">sdfrghaq"z</div>
+						<div class = "cellule">xvcvgjez</div>
+						<div class = "cellule">azdsfmeubles</div>
+						<div class = "cellule_image">
+							<img src = "./img/writing.png" class = "modify" onClick = "modify( this )"/></br>
+							<img src = "./img/minus.png" class = "delete" onClick = "remove( this )"/>
+						</div>
+					</div>
 					<form class = "ligneajt" autocomplete = "off">
 						<div class = "cellule">
 							<input type = "text" name = "Nom" placeholder = "Nom">
@@ -114,9 +125,11 @@
 		<section id = "Recherche">
 			<h2>Recherche</h2>
 			<form class="form_recherche" autocomplete="off">
-				<input type = "text" name = "Nom" placeholder = "Nom">
-				<button type="button" class="bouton_rechercge" onClick = "recherche( this )"> Rechercher </button>			
+				<input class="" type = "text" name = "Nom" placeholder = "Nom">
+				<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,0 )"> Rechercher par nom</button>			
 			</form>
+			<div id="tableau_recherche">
+			</div>
 		</section>
 		
 		<section id = "Avis">

@@ -1,4 +1,5 @@
 var tableau = document.getElementById( "tableau" );
+var tableau_recherche = document.getElementById( "tableau_recherche" );
 
 var types = ["Don", "Dépôt vente", "Déchetterie"];
 var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electroménager", "Loisirs", "Meubles", "Multimédia", "Puériculture", "Végétaux"];
@@ -128,16 +129,64 @@ function add (ligne) // Ajoute une ligne à la fin du tableau
 	alert( "Ligne ajoutée!" );
 }
 
-function recherche (ligne) // Recherche par nom d'abord
+function recherche (ligne, colonne) // Recherche par nom d'abord
 {
-	var inputs = ligne.parentNode.parentNode.getElementsByTagName( "input" );
-	for (var nb = 0; nb < inputs.length; nb++)
-	{
-
-		alert( "Ligne " + nb );
-		
-	}
+	var inputs = ligne.parentNode.parentNode.getElementsByTagName( "input" ); 
+	var ligne = tableau.getElementsByClassName( "ligne" );//Toutes les lignes du tableau
+	var recherchenull= true; //Boolean pour sa voir si les recherche sont nulle
 	
+	for (var i = tableau_recherche.childNodes.length-1; i >0  ; i--)
+		tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+	
+	
+	if (inputs[0].value == "") // Si rien a été entré
+		alert( "Merci de compléter le champ  avant de lancer une recherche!" );
+	else
+	{
+		for (var nb = 1; nb < ligne.length; nb++)
+		{
+			var recherche = new RegExp(inputs[0].value);
+			if(ligne[nb].getElementsByClassName("cellule")[colonne].innerText.match(recherche)!=null)
+			{
+
+				var ligneajt = document.createElement( "div" );
+				ligneajt.setAttribute( "class", "ligne" );
+				tableau_recherche.insertBefore( ligneajt, tableau_recherche.lastElementChild );
+
+				var cellule;
+				for (var i = 0; i < 5; i++)
+				{
+					cellule = document.createElement( "div" );
+					cellule.setAttribute( "class", "cellule" );
+					cellule.innerHTML = ligne[nb].getElementsByClassName("cellule")[i].innerText;
+					ligneajt.appendChild( cellule );
+				}
+				if(recherchenull==true)
+				{
+					recherchenull=false;
+
+					var ligneajt = document.createElement( "div" );
+					ligneajt.setAttribute( "class", "ligne" );
+					tableau_recherche.insertBefore( ligneajt, tableau_recherche.firstElementChild );
+
+					var cellule;
+					for (var i = 0; i < 5; i++)
+					{
+						cellule = document.createElement( "div" );
+						cellule.setAttribute( "class", "cellule" );
+						cellule.innerHTML = ligne[0].getElementsByClassName("cellule")[i].innerText;
+						ligneajt.appendChild( cellule );
+					}
+				}
+				
+			}
+		}
+		if(recherchenull==true)
+		{
+			alert( "Désolé aucun résultat n'a été trouvé pour votre recherche..." );
+		}
+
+	}
 }
 
 function research () // Recherche un lieu précis

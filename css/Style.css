@@ -186,3 +186,9 @@ section
 {
 	opacity: 0.5;
 }
+
+.form_recherche
+{
+	padding: 10px 10px;
+	background-color: black;
+}
