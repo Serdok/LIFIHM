@@ -123,14 +123,41 @@
 		</section>
 		
 		<section id = "Recherche">
-			<h2>Recherche</h2>
-			<form class="form_recherche" autocomplete="off">
-				<input class="" type = "text" name = "Nom" placeholder = "Nom">
-				<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,0 )"> Rechercher par nom</button>			
-			</form>
+			<h2>Recherche</h2>  <div class="tab-content">
+
+			<ul class="nav nav_recherche nav-tabs">
+				<li class="active"><a class="a_recherche" data-toggle="tab" href="#recherche1">Recherche Par Nom</a></li>
+				<li><a class="a_recherche" data-toggle="tab" href="#recherche2">Recherche Par Type</a></li>
+				<li><a class="a_recherche" data-toggle="tab" href="#recherche3">Recherche Par Objet Accepté</a></li>
+			</ul>
+			
+			<div class="tab-content">	
+				<div id="recherche1" class="tab-pane fade in active">
+					<h3>Recherche Par Nom</h3>
+					<form class="form_recherche" autocomplete="off">
+						<input class="" type = "text" name = "Nom" placeholder = "Nom">
+						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,0 )"> Rechercher</button>			
+					</form>
+				</div>
+				<div id="recherche2" class="tab-pane fade">
+					<h3>Recherche Par Type</h3>
+					<form class="form_recherche" autocomplete="off">
+						<input type = "text" name = "Type" placeholder = "Type" list = "types"/>
+						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,1 )"> Rechercher</button>			
+					</form>
+
+				</div>
+				<div id="recherche3" class="tab-pane fade">
+					<h3>Recherche Par Objets Accepté</h3>
+					<form class="form_recherche" autocomplete="off">
+						<input type = "text" name = "Objets" placeholder = "Objets" list = "objets"/>
+						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,4 )"> Rechercher</button>			
+					</form>
+				</div>
+			</div>
 			<div id="tableau_recherche">
 			</div>
-		</section>
+	</section>
 		
 		<section id = "Avis">
 			<h2>Avis</h2>

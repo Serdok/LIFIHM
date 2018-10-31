@@ -145,8 +145,8 @@ function recherche (ligne, colonne) // Recherche par nom d'abord
 	{
 		for (var nb = 1; nb < ligne.length; nb++)
 		{
-			var recherche = new RegExp(inputs[0].value);
-			if(ligne[nb].getElementsByClassName("cellule")[colonne].innerText.match(recherche)!=null)
+			var recherche = new RegExp(inputs[0].value.toUpperCase());
+			if(ligne[nb].getElementsByClassName("cellule")[colonne].innerText.toUpperCase().match(recherche)!=null)
 			{
 
 				var ligneajt = document.createElement( "div" );

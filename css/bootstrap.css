@@ -3862,6 +3862,18 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
+.nav_recherche {
+	text-decoration: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
