@@ -129,6 +129,7 @@
 				<li class="active"><a class="a_recherche" data-toggle="tab" href="#recherche1">Recherche Par Nom</a></li>
 				<li><a class="a_recherche" data-toggle="tab" href="#recherche2">Recherche Par Type</a></li>
 				<li><a class="a_recherche" data-toggle="tab" href="#recherche3">Recherche Par Objet Accepté</a></li>
+				<li><a class="a_recherche" data-toggle="tab" href="#recherche4">Recherche Global</a></li>
 			</ul>
 			
 			<div class="tab-content">	
@@ -152,6 +153,13 @@
 					<form class="form_recherche" autocomplete="off">
 						<input type = "text" name = "Objets" placeholder = "Objets" list = "objets"/>
 						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,4 )"> Rechercher</button>			
+					</form>
+				</div>
+				<div id="recherche4" class="tab-pane fade">
+					<h3>Recherche Global</h3>
+					<form class="form_recherche" autocomplete="off">
+						<input class="" type = "text" name = "Nom" placeholder = "Nom">
+						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche_global( this)"> Rechercher</button>			
 					</form>
 				</div>
 			</div>
