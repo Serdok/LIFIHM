@@ -1,5 +1,5 @@
-var tableau = document.getElementById( "tableau" );
-var tableau_recherche = document.getElementById( "tableau_recherche" );
+var tableau = document.getElementById( "tableau" ); // Tableau de données 
+var tableau_recherche = document.getElementById( "tableau_recherche" ); // Tableau résultat des recherches
 
 var types = ["Don", "Dépôt vente", "Déchetterie"];
 var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electroménager", "Loisirs", "Meubles", "Multimédia", "Puériculture", "Végétaux"];
@@ -187,6 +187,7 @@ function recherche (ligne, colonne) // Recherche par nom d'abord
 		}
 
 	}
+<<<<<<< HEAD
 }
 
 function recherche_global (ligne) // Recherche par nom d'abord
@@ -249,3 +250,6 @@ function recherche_global (ligne) // Recherche par nom d'abord
 
 	}
 }
+=======
+}
+>>>>>>> a452acc89ffced69be6674bac1c6c1dd11011750
