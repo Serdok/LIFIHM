@@ -216,7 +216,7 @@ section
 
 .active
 {
-	z-index: 50;
+	z-index: 10;
 	color: #495057;
 	background-color: #FEFEFE;
 	border-bottom: none; 

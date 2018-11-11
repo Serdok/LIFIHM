@@ -1,6 +1,6 @@
 #tableau
 {
-	width: 70%;
+	width: 10%;
 	height: auto;
 	border: 10px groove red;
 	margin: 0px auto;
@@ -23,17 +23,16 @@ input
 	border: 1px solid black;
 	color: black;
 	display: table-cell;
-	width: auto;
-	height: auto;
+	width: 5%;
 	vertical-align: middle;
 	text-align: center;
-	padding: 10px;
+	padding: 2px;
 }
 
 .add, .delete, .done, .modify
 {
 	height: 60%;
-	padding: 10px 0px 10px 0px;
+	padding: 2px 0px 2px 0px;
 }
 
 .cellule_image
@@ -101,7 +100,7 @@ h2
 	position: fixed;
 	top: 10px;
 	right: 10px;
-	z-index: 15;
+	z-index: 20;
 	background-color: rgba(0, 0, 0, 0);
 	text-align: right;
 	border: none rgba(0, 0, 0, 0);
@@ -113,7 +112,7 @@ h2
 	display:block;
 	position: fixed;
 	top: 10px;
-	z-index: 10;
+	z-index: 15;
 	background-color: rgba(0, 0, 0, 0);
 	text-align: right;
 	width:100%;
@@ -219,10 +218,10 @@ section
 .Avis img
 {
 	padding: 30px;
-	width: 270px;
+	width: 100%;
 	margin: auto;
 	vertical-align: middle;
-	float: left;
+	float: center;
 }
 .copyright
 {
@@ -241,4 +240,23 @@ section
     border-radius:50px;
     width:90px;
     height:90px;
+}
+
+.a_recherche
+{
+	writing-mode: vertical-rl;
+	text-orientation: sideways;
+	margin: 0px;
+	text-align: left;
+}
+
+.a_recherche:active
+{
+	margin: -15px;
+}
+
+.nav_recherche li 
+{
+	width: 20%;
+	height: 180px;
 }
