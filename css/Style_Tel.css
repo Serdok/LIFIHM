@@ -1,17 +1,3 @@
-#tableau
-{
-	width: 10%;
-	height: auto;
-	border: 10px groove red;
-	margin: 0px auto;
-	display: table;
-}
-
-.ligne, .ligneajt, .lignemdf
-{
-	display: table-row;
-}
-
 input
 {
 	width: 10rem;

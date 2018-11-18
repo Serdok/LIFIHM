@@ -1,10 +1,10 @@
 #tableau
 {
-	width: 70%;
-	height: auto;
 	border: 10px groove red;
 	margin: 0px auto;
 	display: table;
+	height: 100%;
+	overflow: auto;
 }
 
 .ligne, .ligneajt, .lignemdf
@@ -38,11 +38,9 @@ input
 
 .cellule_image
 {
-	display: flex;
-	flex-direction : column;
-	justify-content: space-around;
 	border: none;
 	height: 100px;
+	padding: 0px;
 }
 
 .btn
@@ -151,7 +149,7 @@ section
 	border-radius: 10px;
 	font-size: 20px;
 	height: 290px;
-  overflow: auto;
+	overflow: auto;
 	
 }
 
