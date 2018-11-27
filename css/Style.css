@@ -1,223 +1,165 @@
-#tableau
-{
-	border: 10px groove red;
-	margin: 0px auto;
-	display: table;
-	height: 100%;
-	overflow: auto;
+#tableau {
+    height: 100%;
+    overflow: auto;
 }
-
-.ligne, .ligneajt, .lignemdf
-{
-	display: table-row;
+.ligne, .ligneajt, .lignemdf {
+    display: table-row;
 }
-
-input
-{
-	width: 10rem;
+input {
+    width: 10rem;
 }
-
-.cellule, .cellule_image, .autocomplete
-{
-	background-color: white;
-	border: 1px solid black;
-	color: black;
-	display: table-cell;
-	width: auto;
-	height: auto;
-	vertical-align: middle;
-	text-align: center;
-	padding: 10px;
+.cellule, .cellule_image {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    display: table-cell;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
 }
-
-.add, .delete, .done, .modify
-{
-	height: 60%;
-	padding: 10px 0px 10px 0px;
+.add, .delete, .done, .modify {
+    height: 60%;
+    padding: 10px 0px 10px 0px;
 }
-
-.cellule_image
-{
-	border: none;
-	height: 100px;
-	padding: 0px;
+.cellule_image {
+    border: none;
+    height: 100px;
+    padding: 0px;
 }
-
-.btn
-{
-	margin: 10px 0 25px 0;
+.btn {
+    margin: 10px 0 25px 0;
 }
-
-body
-{
-	margin: 0px;
+body {
+    margin: 0px;
 }
-footer
-{
-	background-color: #AFAFAF;
-	border-bottom: none;
-	border-radius-bottom: 0px;
-	border-radius-top: 10px;
-	padding: 25px 0 15px 0;
-	line-height: 24px;
-	width: 100%;
-	height: auto;
+footer {
+    background-color: #AFAFAF;
+    border-bottom: none;
+    border-radius-bottom: 0px;
+    border-radius-top: 10px;
+    padding: 25px 0 15px 0;
+    line-height: 24px;
+    width: 100%;
+    height: auto;
 }
-
-nav
-{
-	position: absolute;
-	width: 80%;
-	margin-top-bottom: 20px;
-	margin: auto;
-	border-radius: 15px;
-	background-color: #D9DCE2;
+nav {
+    position: absolute;
+    width: 80%;
+    margin-top-bottom: 20px;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #D9DCE2;
 }
-
-.nav-pills
-{
-	padding: 15px 0 15px 0;
+.nav-pills {
+    padding: 15px 0 15px 0;
 }
-
-.nav-pills li
-{
-
-	padding: 0px 10px 0px 10px;
+.nav-pills li {
+    padding: 0px 10px 0px 10px;
 }
- 
-
-h1
-{
-	text-align: center;
-	color: blue;
-	font-family: "Comic sans Ms";
-	font-size: 60px;
-	margin-bottom: 10px;
-	margin-top: 0px;
+h1 {
+    text-align: center;
+    color: blue;
+    font-family: "Comic sans Ms";
+    font-size: 60px;
+    margin-bottom: 10px;
+    margin-top: 0px;
 }
-
-h2
-{
-	font-size: 40px;
-	font-weight: bold;
-	font-family: "Marker Felt",Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif ;
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: "Marker Felt", Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
 }
-nav button
-{
-	display: none;
+nav button {
+    display: none;
 }
-
-.menuTelephone, .button_nav_tel
-{
-	display: none;
-	bakground: rgba(0, 0, 0, 0);
-	z-index: -50;
+.menuTelephone, .button_nav_tel {
+    display: none;
+    bakground: rgba(0, 0, 0, 0);
+    z-index: -50;
 }
-
-nav div a
-{
-	background-color: #8CA5E9;
-	color: #113595;
-	padding: 10px;
-	border-radius: 5px;
-	font-weight: bold;
+nav div a {
+    background-color: #8CA5E9;
+    color: #113595;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
 }
-
-section
-{
-	padding: 5%;
-	margin: 3%;
-	padding-top: 10px;
-	border: 10px double #D24444;
-	box-shadow: 20px 20px 5px #A82E2E;
-	border-radius: 20px;
+section {
+    padding: 5%;
+    margin: 3%;
+    padding-top: 10px;
+    border: 10px double #D24444;
+    box-shadow: 20px 20px 5px #A82E2E;
+    border-radius: 20px;
 }
-
-.Avis
-{
-	background-color: #E3E3E3;
-	margin-left: 25%;
-	margin-right: 25%;
-	width: 50%;
-	margin-top-bottom: 10px; 
-	padding: 10px;
-	height: auto;
-	border-radius: 10px;
-	font-size: 20px;
-	overflow: auto;
-	
+.Avis {
+    background-color: #E3E3E3;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    margin-top-bottom: 10px;
+    padding: 10px;
+    height: auto;
+    border-radius: 10px;
+    font-size: 20px;
+    overflow: auto;
 }
-
-.Avis img
-{
-	padding: 30px;
-	width: 190px;
-	margin: auto;
-	vertical-align: middle;
-	float: left;
+.Avis img {
+    padding: 30px;
+    width: 190px;
+    margin: auto;
+    vertical-align: middle;
+    float: left;
 }
-
-.Avis  p
-{
-	padding: 30px;
+.Avis p {
+    padding: 30px;
 }
-.copyright
-{
-	font-style: italic;
-	text-align: center;
-	position: center;
-	margin: auto;
-	color : black;
+.copyright {
+    font-style: italic;
+    text-align: center;
+    position: center;
+    margin: auto;
+    color: black;
 }
-
-.roundedImage
-{
-    overflow:hidden;
-    -webkit-border-radius:50px;
-    -moz-border-radius:50px;
-    border-radius:50px;
-    width:90px;
-    height:90px;
+.roundedImage {
+    overflow: hidden;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    width: 90px;
+    height: 90px;
 }
-
-.cellule_image img:hover
-{
-	opacity: 0.5;
+.cellule_image img:hover {
+    opacity: 0.5;
 }
-
-.form_recherche
-{
-	padding: 10px 10px;
+.form_recherche {
+    padding: 10px 10px;
 }
-
-.a_recherche
-{
-	text-decoration-line: none;
-	position: relative;
-	display: block;
-	padding: 10px 15px;
-	margin-right: 2px;
-	line-height: 1.42857143;
-	border: 1px solid transparent;
-	border-radius: 4px 4px 0 0;
+.a_recherche {
+    text-decoration-line: none;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
 }
-
-.a_recherche:focus, .a_recherche:hover
-{
-	text-decoration: none;
-	text-decoration-line: none;
-	color: #555;
-	cursor: default;
-	border-bottom-color: rgb(221, 221, 221);
-	border-bottom-color: transparent;
+.a_recherche:focus, .a_recherche:hover {
+    text-decoration: none;
+    text-decoration-line: none;
+    color: #555;
+    cursor: default;
+    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-color: transparent;
 }
-
-.active
-{
-	z-index: 10;
-	color: #495057;
-	background-color: #FEFEFE;
-	border-bottom: none; 
-	border-color: #C9CACA #C9CACA;
-	border-bottom-color: #C9CACA;
+.active {
+    z-index: 10;
+    color: #495057;
+    background-color: #FEFEFE;
+    border-bottom: none;
+    border-color: #C9CACA #C9CACA;
+    border-bottom-color: #C9CACA;
 }

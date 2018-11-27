@@ -1,220 +1,619 @@
 <!DOCTYPE html>
 <html>
-	<head>	
-	  <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-		<link rel="stylesheet" href="css/Style.css" />
-		<link rel="stylesheet" media="screen and (orientation: portrait)" href="css/Style_Tel.css" />
-
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/Script.js" async></script>
-
-		<title>Résurrection - Accueil</title>
-	</head>  
-	<body>    
-		<header>
-			<h1> Bienvenue sur Résurrection où vos objets ressuscitent ! </h1>
-		</header>
-		
-		<!-- Liste des types de dépots possibles -->
-		<datalist id="types">
-			<option>Don</option>
-			<option>Dépot Vente</option>
-			<option>Déchetterie</option>
-			<option>Système d'annonces</option>
-		</datalist>
-
-		<!-- Liste des objets acceptés possibles -->
-		<datalist id="objets">
-			<option>Audio / Vidéo</option>
-			<option>Bricolage</option>
-			<option>Culture</option>
-			<option>Décoration</option>
-			<option>Eléctroménager</option>
-			<option>Loisirs</option>
-			<option>Meubles</option>
-			<option>Multimédia</option>
-			<option>Puériculture</option>
-			<option>Végétaux</option>
-		</datalist>
-
-		<nav class="navbar navbar-default nav-stracke">
-			<div class="container-fluid">
-				<ul class="nav nav-pills" role="tablist">
-					<li> <a href="#Tableau">Tableau</a></li>
-					<li> <a href="#Recherche">Recherche</a></li>
-					<li> <a href="#Avis">Avis</a></li>
-				</ul>
-			</div>
-		</nav>
-
-		<button type="button" class="button_nav_tel" data-toggle="collapse" data-target="#nav_collapse"><img src="./img/index.png" height="100%"/></button>
-		<nav id="nav_collapse" class="collapse menuTelephone">
-			<div  class="div_nav_tel" >
-				<ul class="list_nav_tel" data-toggle="collapse" data-target="#nav_collapse">
-					<li> <a href="#Tableau">Tableau</a></li>
-					<li> <a href="#Recherche">Recherche</a></li>
-					<li> <a href="#Avis">Avis</a></li>
-				</ul>
-			</div>
-		</nav>
-
-		<section id = "Tableau">
-			<h2>Lieux rescensés</h2>
-			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#tableau_collapse">
-				Afficher/Cacher le tableau
-			</button>
-			<div id="tableau_collapse" class="collapse_in">
-				<div id = "tableau">
-					<div class = "ligne">
-						<div class = "cellule">Nom</div>
-						<div class = "cellule">Type</div>
-						<div class = "cellule">Coordonnées GPS</div>
-						<div class = "cellule">Contact responsable</div>
-						<div class = "cellule">Objets acceptés</div>
-					</div>
-					<div class = "ligne">
-						<div class = "cellule">Emmaüs</div>
-						<div class = "cellule">Don</div>
-						<div class = "cellule">45° N, 4° E</div>
-						<div class = "cellule">04 28 38 24 96</div>
-						<div class = "cellule">Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture</div>
-						<div class = "cellule_image">
-							<img src = "./img/writing.png" alt="Modifier lieu" class = "modify" onClick = "modify( this )"/></br>
-							<img src = "./img/minus.png"   alt='Supprime lieu' class = "delete" onClick = "remove( this )"/>
-						</div>
-					</div>
-					<div class = "ligne">
-						<div class = "cellule">donnons.org</div>
-						<div class = "cellule">Système d'annonces</div>
-						<div class = "cellule"> / </div>
-						<div class = "cellule">0 825 595 495</div>
-						<div class = "cellule">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</div>
-						<div class = "cellule_image">
-							<img src = "./img/writing.png" alt="Modifier lieu" class = "modify" onClick = "modify( this )"/></br>
-							<img src = "./img/minus.png"  alt='Supprime lieu'  class = "delete" onClick = "remove( this )"/>
-						</div>
-					</div>
-					<div class = "ligne">
-						<div class = "cellule">toutdonner.com</div>
-						<div class = "cellule">Système d'annonces</div>
-						<div class = "cellule"> / </div>
-						<div class = "cellule"> / </div>
-						<div class = "cellule">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</div>
-						<div class = "cellule_image">
-							<img src = "./img/writing.png" alt="Modifier lieu" class = "modify" onClick = "modify( this )"/></br>
-							<img src = "./img/minus.png"  alt='Supprime lieu' class = "delete" onClick = "remove( this )"/>
-						</div>
-					</div>
-					<div class = "ligne">
-						<div class = "cellule">Le Foyer Notre Dame des Sans-Abri</div>
-						<div class = "cellule">Don</div>
-						<div class = "cellule"> 45° N, 5° E </div>
-						<div class = "cellule"> 04 37 37 49 72 </div>
-						<div class = "cellule">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</div>
-						<div class = "cellule_image">
-							<img src = "./img/writing.png" alt="Modifier lieu" class = "modify" onClick = "modify( this )"/></br>
-							<img src = "./img/minus.png"  alt='Supprime lieu' class = "delete" onClick = "remove( this )"/>
-						</div>
-					</div>
-					<div class = "ligne">
-						<div class = "cellule">co-recyclage.org</div>
-						<div class = "cellule">Système d'annonces</div>
-						<div class = "cellule"> / </div>
-						<div class = "cellule"> / </div>
-						<div class = "cellule">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</div>
-						<div class = "cellule_image">
-							<img src = "./img/writing.png" alt="Modifier lieu" class = "modify" onClick = "modify( this )"/></br>
-							<img src = "./img/minus.png"  alt='Supprime lieu' class = "delete" onClick = "remove( this )"/>
-						</div>
-					</div>
-					<form class = "ligneajt" autocomplete = "off">
-						<div class = "cellule">
-							<input type = "text" name = "Nom" placeholder = "Nom">
-						</div>
-						<div class = "autocomplete">
-							<input type = "text" name = "Type" placeholder = "Type" list = "types"/>
-						</div>
-						<div class = "cellule">
-							<input type = "text" name = "Coordonnées GPS" placeholder = "Coordonnées">
-						</div>
-						<div class = "cellule">
-							<input type = "text" name = "Contact Responsable" placeholder = "Contact">
-						</div>
-						<div class = "autocomplete">
-							<input type = "text" name = "Objets" placeholder = "Objets" list = "objets"/>
-						</div>
-						<div class = "cellule_image">
-							<img src = "./img/plus.png"  alt="Ajouter un lieu" class = "add" onClick = "add( this )"/>
-						</div>
-					</form>
-				</div>
-			</div>
-		</section>
-		
-		<section id = "Recherche">
-			<h2>Recherche</h2>  <div class="tab-content">
-
-			<ul class="nav nav_recherche nav-tabs">
-				<li class="active"><a class="a_recherche" data-toggle="tab" href="#recherche1">Recherche par nom</a></li>
-				<li><a class="a_recherche" data-toggle="tab" href="#recherche2">Recherche par type</a></li>
-				<li><a class="a_recherche" data-toggle="tab" href="#recherche3">Recherche par objet accepté</a></li>
-				<li><a class="a_recherche" data-toggle="tab" href="#recherche4">Recherche global</a></li>
-			</ul>
-			
-			<div class="tab-content">	
-				<div id="recherche1" class="tab-pane fade in active">
-					<h3>Recherche Par Nom</h3>
-					<form class="form_recherche" autocomplete="off">
-						<input class="" type = "text" name = "Nom" placeholder = "Nom">
-						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,0 )"> Rechercher</button>			
-					</form>
-				</div>
-				<div id="recherche2" class="tab-pane fade">
-					<h3>Recherche Par Type</h3>
-					<form class="form_recherche" autocomplete="off">
-						<input type = "text" name = "Type" placeholder = "Type" list = "types"/>
-						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,1 )"> Rechercher</button>			
-					</form>
-
-				</div>
-				<div id="recherche3" class="tab-pane fade">
-					<h3>Recherche Par Objet Accepté</h3>
-					<form class="form_recherche" autocomplete="off">
-						<input type = "text" name = "Objets" placeholder = "Objets" list = "objets"/>
-						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche( this,4 )"> Rechercher</button>			
-					</form>
-				</div>
-				<div id="recherche4" class="tab-pane fade">
-					<h3>Recherche Global</h3>
-					<form class="form_recherche" autocomplete="off">
-						<input class="" type = "text" name = "Nom" placeholder = "Nom">
-						<button type="button" class="btn btn-outline-success my-2 my-sm-0" onClick = "recherche_global( this)"> Rechercher</button>			
-					</form>
-				</div>
-			</div>
-			<div id="tableau_recherche">
-			</div>
-	</section>
-		
-		<section id = "Avis">
-			<h2>Avis</h2>
-			<div class="Avis">
-				<img src="img/me.png" alt="Photo Donneur d'Avis" title="Photo Donneur d'Avis"> </img>
-				<p>
-					Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.
-				</p>
-			</div>
-		</section>
-		
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+            <link href="css/bootstrap.css" rel="stylesheet"/>
+            <link href="css/Style.css" rel="stylesheet"/>
+            <link href="css/Style_Tel.css" media="screen and (orientation: portrait)" rel="stylesheet"/>
+            <script src="js/jquery.js">
+            </script>
+            <script src="js/bootstrap.min.js">
+            </script>
+            <script async="true" src="js/Script.js">
+            </script>
+            <title>
+                Résurrection - Accueil
+            </title>
+        </meta>
+    </head>
+    <body onload="setLines()">
+        <header>
+            <h1>
+                Bienvenue sur Résurrection où vos objets ressuscitent !
+            </h1>
+        </header>
+        <!-- Liste des types de dépots possibles -->
+        <datalist id="types">
+            <option>
+                Don
+            </option>
+            <option>
+                Dépot Vente
+            </option>
+            <option>
+                Déchetterie
+            </option>
+            <option>
+                Système d'annonces
+            </option>
+        </datalist>
+        <!-- Liste des objets acceptés possibles -->
+        <datalist id="objets">
+            <option>
+                Audio / Vidéo
+            </option>
+            <option>
+                Bricolage
+            </option>
+            <option>
+                Culture
+            </option>
+            <option>
+                Décoration
+            </option>
+            <option>
+                Eléctroménager
+            </option>
+            <option>
+                Loisirs
+            </option>
+            <option>
+                Meubles
+            </option>
+            <option>
+                Multimédia
+            </option>
+            <option>
+                Puériculture
+            </option>
+            <option>
+                Végétaux
+            </option>
+        </datalist>
+        <nav class="navbar navbar-default nav-stracke">
+            <div class="container-fluid">
+                <ul class="nav nav-pills" role="tablist">
+                    <li>
+                        <a href="#Tableau">
+                            Liste des lieux rescencés
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Recherche">
+                            Rechercher
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Avis">
+                            Donner un avis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <button class="button_nav_tel" data-target="#nav_collapse" data-toggle="collapse" type="button">
+            <img height="100%" src="./img/index.png"/>
+        </button>
+        <nav class="collapse menuTelephone" id="nav_collapse">
+            <div class="div_nav_tel">
+                <ul class="list_nav_tel" data-target="#nav_collapse" data-toggle="collapse">
+                    <li>
+                        <a href="#Tableau">
+                            Tableau
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Recherche">
+                            Recherche
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Avis">
+                            Avis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section id="Recherche">
+            <h2>
+                Recherche
+            </h2>
+            <div class="tab-content">
+                <ul class="nav nav_recherche nav-tabs">
+                    <li class="active">
+                        <a class="a_recherche" data-toggle="tab" href="#recherche1">
+                            Recherche par nom
+                        </a>
+                    </li>
+                    <li>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche2">
+                            Recherche par type
+                        </a>
+                    </li>
+                    <li>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche3">
+                            Recherche par objet accepté
+                        </a>
+                    </li>
+                    <li>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche4">
+                            Recherche globale
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="recherche1">
+                        <h3>
+                            Recherche Par Nom
+                        </h3>
+                        <form autocomplete="off" class="form_recherche">
+                            <input class="" name="Nom" placeholder="Nom" type="text">
+                                <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,0 )" type="button">
+                                    Rechercher
+                                </button>
+                            </input>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="recherche2">
+                        <h3>
+                            Recherche Par Type
+                        </h3>
+                        <form autocomplete="off" class="form_recherche">
+                            <input list="types" name="Type" placeholder="Type" type="text"/>
+                            <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,1 )" type="button">
+                                Rechercher
+                            </button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="recherche3">
+                        <h3>
+                            Recherche Par Objet Accepté
+                        </h3>
+                        <form autocomplete="off" class="form_recherche">
+                            <input list="objets" name="Objets" placeholder="Objets" type="text"/>
+                            <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,4 )" type="button">
+                                Rechercher
+                            </button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="recherche4">
+                        <h3>
+                            Recherche Globale
+                        </h3>
+                        <form autocomplete="off" class="form_recherche">
+                            <input class="" name="Nom" placeholder="Nom" type="text">
+                                <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche_global( this)" type="button">
+                                    Rechercher
+                                </button>
+                            </input>
+                        </form>
+                    </div>
+                </div>
+                <div id="tableau_recherche">
+                </div>
+            </div>
+        </section>
+        <section id="Tableau">
+            <h2>
+                Lieux rescensés
+            </h2>
+            <button class="btn btn-info" data-target="#tableau_collapse" data-toggle="collapse" type="button">
+                Afficher/Cacher le tableau
+            </button>
+            <div class="collapse_in" id="tableau_collapse">
+                <div class="table-responsive">
+                    <table class="table table-hover table-stripped table-bordered" id="tableau">
+                        <thead class="thead-dark">
+                            <tr>
+                                <!-- Pas besoin de compléter le numéro de ligne, une fonction javascript s'en occupe -->
+                                <th scope="col">
+                                    #
+                                </th>
+                                <th scope="col">
+                                    Nom
+                                </th>
+                                <th scope="col">
+                                    Type
+                                </th>
+                                <th scope="col">
+                                    Localisation GPS
+                                </th>
+                                <th scope="col">
+                                    Contact
+                                </th>
+                                <th scope="col">
+                                    Objets Acceptés
+                                </th>
+                                <th scope="col">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                    Emmaüs
+                                </td>
+                                <td scope="row">
+                                    Don
+                                </td>
+                                <td scope="row">
+                                    45° N, 4° E
+                                </td>
+                                <td scope="row">
+                                    04 28 38 24 96
+                                </td>
+                                <td scope="row">
+                                    Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                    donnons.org
+                                </td>
+                                <td scope="row">
+                                    Système d'annonces
+                                </td>
+                                <td scope="row">
+                                    Non renseigné
+                                </td>
+                                <td scope="row">
+                                    08 25 59 54 95
+                                </td>
+                                <td scope="row">
+                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                    toutdonner.org
+                                </td>
+                                <td scope="row">
+                                    Système d'annonces
+                                </td>
+                                <td scope="row">
+                                    Non renseigné
+                                </td>
+                                <td scope="row">
+                                    Non renseigné
+                                </td>
+                                <td scope="row">
+                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                    Le Foyer Notre Dame des Sans-Abri
+                                </td>
+                                <td scope="row">
+                                    Don
+                                </td>
+                                <td scope="row">
+                                    45° N, 5° E
+                                </td>
+                                <td scope="row">
+                                    04 37 37 49 72
+                                </td>
+                                <td scope="row">
+                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                    co-recyclage.org
+                                </td>
+                                <td scope="row">
+                                    Système d'annonces
+                                </td>
+                                <td scope="row">
+                                    Non renseigné
+                                </td>
+                                <td scope="row">
+                                    Non renseigné
+                                </td>
+                                <td scope="row">
+                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td scope="row">
+                                </td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Ancien tableau
+                <div id="tableau">
+                    <div class="ligne">
+                        <div class="cellule">
+                            Nom
+                        </div>
+                        <div class="cellule">
+                            Type
+                        </div>
+                        <div class="cellule">
+                            Coordonnées GPS
+                        </div>
+                        <div class="cellule">
+                            Contact responsable
+                        </div>
+                        <div class="cellule">
+                            Objets acceptés
+                        </div>
+                    </div>
+                    <div class="ligne">
+                        <div class="cellule">
+                            Emmaüs
+                        </div>
+                        <div class="cellule">
+                            Don
+                        </div>
+                        <div class="cellule">
+                            45° N, 4° E
+                        </div>
+                        <div class="cellule">
+                            04 28 38 24 96
+                        </div>
+                        <div class="cellule">
+                            Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture
+                        </div>
+                        <div class="cellule_image">
+                            <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+        <div class="ligne">
+            <div class="cellule">
+                donnons.org
+            </div>
+            <div class="cellule">
+                Système d'annonces
+            </div>
+            <div class="cellule">
+                /
+            </div>
+            <div class="cellule">
+                0 825 595 495
+            </div>
+            <div class="cellule">
+                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+            </div>
+            <div class="cellule_image">
+                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+            </div>
+        </div>
+        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+        <div class="ligne">
+            <div class="cellule">
+                toutdonner.com
+            </div>
+            <div class="cellule">
+                Système d'annonces
+            </div>
+            <div class="cellule">
+                /
+            </div>
+            <div class="cellule">
+                /
+            </div>
+            <div class="cellule">
+                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+            </div>
+            <div class="cellule_image">
+                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+            </div>
+        </div>
+        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+        <div class="ligne">
+            <div class="cellule">
+                Le Foyer Notre Dame des Sans-Abri
+            </div>
+            <div class="cellule">
+                Don
+            </div>
+            <div class="cellule">
+                45° N, 5° E
+            </div>
+            <div class="cellule">
+                04 37 37 49 72
+            </div>
+            <div class="cellule">
+                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+            </div>
+            <div class="cellule_image">
+                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+            </div>
+        </div>
+        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+        <div class="ligne">
+            <div class="cellule">
+                co-recyclage.org
+            </div>
+            <div class="cellule">
+                Système d'annonces
+            </div>
+            <div class="cellule">
+                /
+            </div>
+            <div class="cellule">
+                /
+            </div>
+            <div class="cellule">
+                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
+            </div>
+            <div class="cellule_image">
+                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+            </div>
+        </div>
+        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
+        <form autocomplete="off" class="ligneajt">
+            <div class="cellule">
+                <input name="Nom" placeholder="Nom" type="text">
+                </input>
+            </div>
+            <div class="cellule">
+                <input list="types" name="Type" placeholder="Type" type="text"/>
+            </div>
+            <div class="cellule">
+                <input name="Coordonnées GPS" placeholder="Coordonnées" type="text">
+                </input>
+            </div>
+            <div class="cellule">
+                <input name="Contact Responsable" placeholder="Contact" type="text">
+                </input>
+            </div>
+            <div class="cellule">
+                <input list="objets" name="Objets" placeholder="Objets" type="text"/>
+            </div>
+            <div class="cellule_image">
+                <img alt="Ajouter un lieu" class="add" onclick="add( this )" src="./img/plus.png"/>
+            </div>
+        </form>
+    -->
+                <section id="Avis">
+                    <h2>
+                        Avis
+                    </h2>
+                    <div class="Avis">
+                        <img alt="Photo Donneur d'Avis" src="img/me.png" title="Photo Donneur d'Avis">
+                        </img>
+                        <p>
+                            Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.
+                        </p>
+                    </div>
+                </section>
+                <footer>
+                    <div class="copyright">
+                        <p>
+                            Resurrection © 2018
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        </section>
     </body>
-
-    <footer>
-    	<div class="copyright">
-    		<p>Resurrection &copy; 2018</p>
-    	</div>
-    </footer>
 </html>
