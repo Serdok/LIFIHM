@@ -60,7 +60,7 @@ function modify (ligne) // Modifie une ligne du tableau
 		}
 		cellule_image = document.createElement( "div" );
 		cellule_image.setAttribute( "class", "cellule_image" );
-		cellule_image.innerHTML = "<img src = './img/check.png' class = 'done' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png' class = 'delete' onClick = 'remove( this )'/>";
+		cellule_image.innerHTML = "<img src = './img/check.png' alt='Modifier lieu' class = 'done' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png'  alt='Supprime lieu'  class = 'delete' onClick = 'remove( this )'/>";
 		formulaire.appendChild( cellule_image ); // On ajoute la <div> cellule_image dans la <div> formulaire
 
 		tableau.replaceChild( formulaire, parent ); // On remplace la ligne par le formulaire
@@ -85,7 +85,7 @@ function modify (ligne) // Modifie une ligne du tableau
 		}
 		cellule_image = document.createElement( "div" );
 		cellule_image.setAttribute( "class", "cellule_image" );
-		cellule_image.innerHTML = "<img src = './img/writing.png' class = 'modify' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png' class = 'delete' onClick = 'remove( this )'/>";
+		cellule_image.innerHTML = "<img src = './img/writing.png' alt='Modifier lieu' class = 'modify' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png'  alt='Supprime lieu'  class = 'delete' onClick = 'remove( this )'/>";
 		modifications.appendChild( cellule_image );
 
 		tableau.replaceChild( modifications, parent ); // On remplace le formulaire par la ligne modifiée
@@ -123,7 +123,7 @@ function add (ligne) // Ajoute une ligne à la fin du tableau
 	}
 	cellule_image = document.createElement( "div" );
 	cellule_image.setAttribute( "class", "cellule_image" );
-	cellule_image.innerHTML = "<img src = './img/writing.png' class = 'modify' onClick = 'modify( this )' style='height: 60%; padding: 10px 0px 10px 0px;'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png' class = 'delete' onClick = 'remove( this )' style='height: 60%; padding: 10px 0px 10px 0px;' />";
+	cellule_image.innerHTML = "<img src = './img/writing.png' alt='Modifier lieu' class = 'modify' onClick = 'modify( this )' style='height: 60%; padding: 10px 0px 10px 0px;'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png'  alt='Supprime lieu' class = 'delete' onClick = 'remove( this )' style='height: 60%; padding: 10px 0px 10px 0px;' />";
 	ligneajt.appendChild( cellule_image );
 
 	alert( "Ligne ajoutée!" );

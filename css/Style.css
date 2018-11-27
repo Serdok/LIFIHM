@@ -67,7 +67,7 @@ footer
 nav
 {
 	position: absolute;
-	width: 75%;
+	width: 80%;
 	margin-top-bottom: 20px;
 	margin: auto;
 	border-radius: 15px;
@@ -81,9 +81,11 @@ nav
 
 .nav-pills li
 {
+
 	padding: 0px 10px 0px 10px;
 }
  
+
 h1
 {
 	text-align: center;
@@ -112,13 +114,6 @@ nav button
 	z-index: -50;
 }
 
-nav div
-{
-	width: auto;
-    display: flex;
-   	justify-content: space-around;
-}
-
 nav div a
 {
 	background-color: #8CA5E9;
@@ -141,14 +136,14 @@ section
 .Avis
 {
 	background-color: #E3E3E3;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 25%;
+	margin-right: 25%;
+	width: 50%;
 	margin-top-bottom: 10px; 
 	padding: 10px;
 	height: auto;
 	border-radius: 10px;
 	font-size: 20px;
-	height: 290px;
 	overflow: auto;
 	
 }
@@ -156,10 +151,15 @@ section
 .Avis img
 {
 	padding: 30px;
-	width: 270px;
+	width: 190px;
 	margin: auto;
 	vertical-align: middle;
 	float: left;
+}
+
+.Avis  p
+{
+	padding: 30px;
 }
 .copyright
 {

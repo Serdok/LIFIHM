@@ -151,7 +151,7 @@ h2
 
 .list_nav_tel li
 {
-	font-size: 30px;
+	font-size: 60px;
 	text-align: center;
 	
 }
@@ -165,14 +165,11 @@ h2
 
 .list_nav_tel li a button
 {
-	font-size: 30px;
+	font-size: 60px;
 	color: #122F7D;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 1);
 	
-}
-nav div a
-{
 }
 
 section
@@ -191,13 +188,13 @@ section
 	background-color: #E3E3E3;
 	margin-left: 15%;
 	margin-right: 15%;
+	width: 70%;
 	margin-top-bottom: 10px; 
 	padding: 10px;
 	height: auto;
 	border-radius: 10px;
-	font-size: 20px;
-	height: 290px;
-  overflow: auto;
+	font-size: 30px;
+	overflow: auto;
 	
 }
 
@@ -207,7 +204,12 @@ section
 	width: 100%;
 	margin: auto;
 	vertical-align: middle;
-	float: center;
+	float: left;
+}
+
+.Avis  p
+{
+	padding: 30px;
 }
 .copyright
 {
