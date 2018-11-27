@@ -55,7 +55,7 @@ nav {
 .nav-pills {
     padding: 15px 0 15px 0;
 }
-.nav-pills li {
+.nav-pills div {
     padding: 0px 10px 0px 10px;
 }
 h1 {
@@ -79,12 +79,17 @@ nav button {
     bakground: rgba(0, 0, 0, 0);
     z-index: -50;
 }
-nav div a {
-    background-color: #8CA5E9;
-    color: #113595;
+.nav-pills div a {
+    background-color: #303FA1;
+    color: #8AC6F3;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
+}
+.nav-pills div a:hover {
+    background-color: #8AC6F3;
+    color: #303FA1;
+	text-decoration: none;
 }
 section {
     padding: 5%;

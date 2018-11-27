@@ -5,7 +5,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport">
             <link href="css/bootstrap.css" rel="stylesheet"/>
             <link href="css/Style.css" rel="stylesheet"/>
-            <link href="css/Style_Tel.css" media="screen and (orientation: portrait)" rel="stylesheet"/>
+            <link href="css/Style_Tel.css" media="(orientation: portrait), (width<750px)" rel="stylesheet"/>
             <script src="js/jquery.js">
             </script>
             <script src="js/bootstrap.min.js">
@@ -33,6 +33,9 @@
             </option>
             <option>
                 Déchetterie
+            </option>
+            <option>
+                Réparation
             </option>
             <option>
                 Système d'annonces
@@ -74,38 +77,38 @@
         <nav class="navbar navbar-default nav-stracke">
             <div class="container-fluid">
                 <ul class="nav nav-pills" role="tablist">
-                    <li>
-                        <a href="#Tableau">
-                            Liste des lieux rescencés
-                        </a>
-                    </li>
-                    <li>
+                    <div>
                         <a href="#Recherche">
                             Rechercher
                         </a>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
+                        <a href="#Tableau">
+                            Liste des lieux rescencés
+                        </a>
+                    </div>
+                    <div>
                         <a href="#Avis">
                             Donner un avis
                         </a>
-                    </li>
+                    </div>
                 </ul>
             </div>
         </nav>
         <button class="button_nav_tel" data-target="#nav_collapse" data-toggle="collapse" type="button">
             <img height="100%" src="./img/index.png"/>
         </button>
-        <nav class="collapse menuTelephone" id="nav_collapse">
-            <div class="div_nav_tel">
-                <ul class="list_nav_tel" data-target="#nav_collapse" data-toggle="collapse">
-                    <li>
-                        <a href="#Tableau">
-                            Tableau
-                        </a>
-                    </li>
+		<nav id="nav_collapse" class="collapse menuTelephone">
+			<div  class="div_nav_tel" >
+				<ul class="list_nav_tel" data-toggle="collapse" data-target="#nav_collapse">
                     <li>
                         <a href="#Recherche">
                             Recherche
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Tableau">
+                            Liste des lieux rescencés
                         </a>
                     </li>
                     <li>
@@ -207,7 +210,6 @@
                     <table class="table table-hover table-stripped table-bordered" id="tableau">
                         <thead class="thead-dark">
                             <tr>
-                                <!-- Pas besoin de compléter le numéro de ligne, une fonction javascript s'en occupe -->
                                 <th scope="col">
                                     #
                                 </th>
@@ -350,14 +352,19 @@
                                 <th scope="row">
                                 </th>
                                 <td scope="row">
+									Repair café
                                 </td>
                                 <td scope="row">
+									Réparation
                                 </td>
                                 <td scope="row">
+									 45° N, 4° E
                                 </td>
                                 <td scope="row">
+									06.23.67.18.58
                                 </td>
                                 <td scope="row">
+									Bricolage, Décoration, Eléctroménager, Loisirs, Meubles
                                 </td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
@@ -368,14 +375,19 @@
                                 <th scope="row">
                                 </th>
                                 <td scope="row">
+									La Boutique sans argent
                                 </td>
                                 <td scope="row">
+									Don
                                 </td>
                                 <td scope="row">
+									 48° N, 2° E 
                                 </td>
                                 <td scope="row">
+									09 53 42 23 66
                                 </td>
                                 <td scope="row">
+									Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédi
                                 </td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
@@ -386,14 +398,19 @@
                                 <th scope="row">
                                 </th>
                                 <td scope="row">
+									recupe.net
                                 </td>
                                 <td scope="row">
+									Don
                                 </td>
                                 <td scope="row">
+									Non renseigné
                                 </td>
                                 <td scope="row">
+									Non renseigné
                                 </td>
                                 <td scope="row">
+									Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture
                                 </td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
@@ -404,14 +421,19 @@
                                 <th scope="row">
                                 </th>
                                 <td scope="row">
+									commentreparer.com
                                 </td>
                                 <td scope="row">
+									Réparation
                                 </td>
                                 <td scope="row">
+									Non renseigné
                                 </td>
                                 <td scope="row">
+									Non renseigné
                                 </td>
                                 <td scope="row">
+									Bricolage, Décoration, Eléctroménager, Loisirs, Meubles
                                 </td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
@@ -422,14 +444,19 @@
                                 <th scope="row">
                                 </th>
                                 <td scope="row">
+									leboncoin.fr
                                 </td>
                                 <td scope="row">
+									Système d'annonces
                                 </td>
                                 <td scope="row">
+									Non renseigné
                                 </td>
                                 <td scope="row">
+									Non renseigné
                                 </td>
                                 <td scope="row">
+									Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia
                                 </td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
@@ -438,182 +465,51 @@
                             </tr>
                             <tr>
                                 <th scope="row">
+									<form autocomplete="off">
+										<td scope="row">
+											<input name="Nom" placeholder="Nom" type="text"/>
+										</td>	
+										<td scope="row">
+											<input list="types" name="Type" placeholder="Type" type="text"/>
+										</td>	
+										<td scope="row">
+											<input name="Coordonnées GPS" placeholder="Coordonnées" type="text"/>
+										</td>	
+										<td scope="row">
+											<input name="Contact Responsable" placeholder="Contact" type="text"/>
+										</td>	
+										<td scope="row">
+											<input list="objets" name="Objets" placeholder="Objets" type="text"/>
+										</td>	
+										<td class="cellule_image" scope="row">
+											<img alt="Ajouter un lieu" class="add" onclick="add( this )" src="./img/plus.png"/>
+										</td>	
+									</form>
                                 </th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <!-- Ancien tableau
-                <div id="tableau">
-                    <div class="ligne">
-                        <div class="cellule">
-                            Nom
-                        </div>
-                        <div class="cellule">
-                            Type
-                        </div>
-                        <div class="cellule">
-                            Coordonnées GPS
-                        </div>
-                        <div class="cellule">
-                            Contact responsable
-                        </div>
-                        <div class="cellule">
-                            Objets acceptés
-                        </div>
-                    </div>
-                    <div class="ligne">
-                        <div class="cellule">
-                            Emmaüs
-                        </div>
-                        <div class="cellule">
-                            Don
-                        </div>
-                        <div class="cellule">
-                            45° N, 4° E
-                        </div>
-                        <div class="cellule">
-                            04 28 38 24 96
-                        </div>
-                        <div class="cellule">
-                            Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture
-                        </div>
-                        <div class="cellule_image">
-                            <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
-        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
-        <div class="ligne">
-            <div class="cellule">
-                donnons.org
-            </div>
-            <div class="cellule">
-                Système d'annonces
-            </div>
-            <div class="cellule">
-                /
-            </div>
-            <div class="cellule">
-                0 825 595 495
-            </div>
-            <div class="cellule">
-                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-            </div>
-            <div class="cellule_image">
-                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
-            </div>
-        </div>
-        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
-        <div class="ligne">
-            <div class="cellule">
-                toutdonner.com
-            </div>
-            <div class="cellule">
-                Système d'annonces
-            </div>
-            <div class="cellule">
-                /
-            </div>
-            <div class="cellule">
-                /
-            </div>
-            <div class="cellule">
-                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-            </div>
-            <div class="cellule_image">
-                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
-            </div>
-        </div>
-        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
-        <div class="ligne">
-            <div class="cellule">
-                Le Foyer Notre Dame des Sans-Abri
-            </div>
-            <div class="cellule">
-                Don
-            </div>
-            <div class="cellule">
-                45° N, 5° E
-            </div>
-            <div class="cellule">
-                04 37 37 49 72
-            </div>
-            <div class="cellule">
-                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-            </div>
-            <div class="cellule_image">
-                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
-            </div>
-        </div>
-        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
-        <div class="ligne">
-            <div class="cellule">
-                co-recyclage.org
-            </div>
-            <div class="cellule">
-                Système d'annonces
-            </div>
-            <div class="cellule">
-                /
-            </div>
-            <div class="cellule">
-                /
-            </div>
-            <div class="cellule">
-                Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-            </div>
-            <div class="cellule_image">
-                <img alt="Modifier lieu" class="modify" onclick="modify( this )" src="./img/writing.png"/>
-            </div>
-        </div>
-        <img alt="Supprime lieu" class="delete" onclick="remove( this )" src="./img/minus.png"/>
-        <form autocomplete="off" class="ligneajt">
-            <div class="cellule">
-                <input name="Nom" placeholder="Nom" type="text">
-                </input>
-            </div>
-            <div class="cellule">
-                <input list="types" name="Type" placeholder="Type" type="text"/>
-            </div>
-            <div class="cellule">
-                <input name="Coordonnées GPS" placeholder="Coordonnées" type="text">
-                </input>
-            </div>
-            <div class="cellule">
-                <input name="Contact Responsable" placeholder="Contact" type="text">
-                </input>
-            </div>
-            <div class="cellule">
-                <input list="objets" name="Objets" placeholder="Objets" type="text"/>
-            </div>
-            <div class="cellule_image">
-                <img alt="Ajouter un lieu" class="add" onclick="add( this )" src="./img/plus.png"/>
-            </div>
-        </form>
-    -->
-                <section id="Avis">
-                    <h2>
-                        Avis
-                    </h2>
-                    <div class="Avis">
-                        <img alt="Photo Donneur d'Avis" src="img/me.png" title="Photo Donneur d'Avis">
-                        </img>
-                        <p>
-                            Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.
-                        </p>
-                    </div>
-                </section>
-                <footer>
-                    <div class="copyright">
-                        <p>
-                            Resurrection © 2018
-                        </p>
-                    </div>
-                </footer>
-            </div>
-        </section>
+		<section id="Avis">
+			<h2>
+				Avis
+			</h2>
+			<div class="Avis">
+				<img alt="Photo Donneur d'Avis" src="img/me.png" title="Photo Donneur d'Avis">
+				</img>
+				<p>
+					Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.
+				</p>
+			</div>
+		</section>
+		<footer>
+			<div class="copyright">
+				<p>
+					Resurrection © 2018
+				</p>
+			</div>
+		</footer>
     </body>
 </html>
