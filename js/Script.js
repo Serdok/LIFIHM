@@ -1,7 +1,7 @@
 var tableau = document.getElementById("tableau"); // Tableau de données 
 var head = document.getElementById( "tableau_head" ); // En-tête du tableau de données
 
-var tableau_recherche = document.getElementById("tableau_recherche"); // Tableau résultat des recherches
+var tableau_recherche = document.getElementById("tableau_recherche").getElementsByTagName("tbody")[0]; // Tableau résultat des recherches
 
 var types = ["Don", "Dépôt vente", "Déchetterie"];
 var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electroménager", "Loisirs", "Meubles", "Multimédia", "Puériculture", "Végétaux"];
@@ -122,40 +122,49 @@ function add(ligne) // Ajoute une ligne à la fin du tableau
     alert("Ligne ajoutée!");
 }
 
-function recherche(ligne, colonne) // Recherche par nom d'abord
+function recherche(ligne, colonne)
 {
     var inputs = ligne.parentNode.parentNode.getElementsByTagName("input");
-    var ligne = tableau.getElementsByClassName("ligne"); //Toutes les lignes du tableau
+    var ligne = tableau.getElementsByTagName("tr"); //Toutes les lignes du tableau
     var recherchenull = true; //Boolean pour sa voir si les recherche sont nulle
-    for (var i = tableau_recherche.childNodes.length - 1; i > 0; i--) tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+    for (var i = tableau_recherche.childNodes.length - 1; i > 0; i--)
+        tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+    try{
+        tableau_recherche.parentNode.getElementsByTagName("thead")[0].removeChild(tableau_recherche.parentNode.getElementsByTagName("thead")[0].childNodes  [0]);
+    }
+    catch(ex){
+
+    }
     if (inputs[0].value == "") // Si rien a été entré
         alert("Merci de compléter le champ avant de lancer une recherche!");
     else {
-        for (var nb = ligne.length; nb > 0; nb--) {
+        for (var nb = 1; nb < ligne.length; nb++) {
             var recherche = new RegExp(inputs[0].value.toUpperCase());
-            if (ligne[nb].getElementsByClassName("cellule")[colonne].innerText.toUpperCase().match(recherche) != null) {
-                var ligneajt = document.createElement("div");
-                ligneajt.setAttribute("class", "ligne");
-                tableau_recherche.insertBefore(ligneajt, tableau_recherche.lastElementChild);
+            if (ligne[nb].getElementsByTagName("td")[colonne].innerText.toUpperCase().match(recherche) != null) {
+                var ligneajt = document.createElement("tr");
+                tableau_recherche.insertBefore(ligneajt, null);
                 var cellule;
+                cellule = document.createElement("th");
+                cellule.innerHTML = ligne[nb].getElementsByTagName("th")[0].innerText;
+           		cellule.setAttribute("scope", "row");
+                ligneajt.appendChild(cellule);
                 for (var i = 0; i < 5; i++) {
-                    cellule = document.createElement("div");
-                    cellule.setAttribute("class", "cellule");
-                    cellule.innerHTML = ligne[nb].getElementsByClassName("cellule")[i].innerText;
+                    cellule = document.createElement("td");
+               		cellule.setAttribute("scope", "row");
+                    cellule.innerHTML = ligne[nb].getElementsByTagName("td")[i].innerText;
                     ligneajt.appendChild(cellule);
                 }
                 if (recherchenull == true) {
                     recherchenull = false;
-                    var ligneajt = document.createElement("div");
-                    ligneajt.setAttribute("class", "ligne");
-                    tableau_recherche.insertBefore(ligneajt, tableau_recherche.firstElementChild);
+                    var ligneajt = document.createElement("tr");
                     var cellule;
-                    for (var i = 0; i < 5; i++) {
-                        cellule = document.createElement("div");
-                        cellule.setAttribute("class", "cellule");
-                        cellule.innerHTML = ligne[0].getElementsByClassName("cellule")[i].innerText;
+                    for (var i = 0; i <= 5; i++) {
+                        cellule = document.createElement("th");
+                        cellule.setAttribute("scope", "col");
+                        cellule.innerHTML = ligne[0].getElementsByTagName("th")[i].innerText;
                         ligneajt.appendChild(cellule);
                     }
+                    tableau_recherche.parentNode.getElementsByTagName("thead")[0].appendChild(ligneajt);
                 }
             }
         }
@@ -165,42 +174,52 @@ function recherche(ligne, colonne) // Recherche par nom d'abord
     }
 }
 
-function recherche_global(ligne) // Recherche par nom d'abord
+function recherche_global(ligne)
 {
     var inputs = ligne.parentNode.parentNode.getElementsByTagName("input");
-    var ligne = tableau.getElementsByClassName("ligne"); //Toutes les lignes du tableau
+    var ligne = tableau.getElementsByTagName("tr"); //Toutes les lignes du tableau
     var recherchenull = true; //Boolean pour sa voir si les recherche sont nulle
     for (var i = tableau_recherche.childNodes.length - 1; i > 0; i--) tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+    try{
+        tableau_recherche.parentNode.getElementsByTagName("thead")[0].removeChild(tableau_recherche.parentNode.getElementsByTagName("thead")[0].childNodes  [0]);
+    }
+    catch(ex){
+
+    }
     if (inputs[0].value == "") // Si rien a été entré
         alert("Merci de compléter le champ avant de lancer une recherche!");
     else {
-        for (var nb = ligne.length; nb > 0; nb--)
-            for (var colonne = 0; colonne < 4; colonne++) {
+        for (var nb = 1; nb < ligne.length; nb++)
+            for (var colonne = 0; colonne <=4; colonne++) {
                 var recherche = new RegExp(inputs[0].value.toUpperCase());
-                if (ligne[nb].getElementsByClassName("cellule")[colonne].innerText.toUpperCase().match(recherche) != null) {
-                    var ligneajt = document.createElement("div");
-                    ligneajt.setAttribute("class", "ligne");
-                    tableau_recherche.insertBefore(ligneajt, tableau_recherche.lastElementChild);
+                if (ligne[nb].getElementsByTagName("td")[colonne].innerText.toUpperCase().match(recherche) != null) {
+                    var ligneajt = document.createElement("tr");
+                    tableau_recherche.insertBefore(ligneajt, null);
                     var cellule;
+                    cellule = document.createElement("th");
+                    cellule.innerHTML = ligne[nb].getElementsByTagName("th")[0].innerText;
+                    cellule.setAttribute("scope", "row");
+                    ligneajt.appendChild(cellule);
                     for (var i = 0; i < 5; i++) {
-                        cellule = document.createElement("div");
-                        cellule.setAttribute("class", "cellule");
-                        cellule.innerHTML = ligne[nb].getElementsByClassName("cellule")[i].innerText;
+                        cellule = document.createElement("td");
+                        cellule.setAttribute("scope", "row");
+                        cellule.innerHTML = ligne[nb].getElementsByTagName("td")[i].innerText;
                         ligneajt.appendChild(cellule);
                     }
+
                     if (recherchenull == true) {
                         recherchenull = false;
-                        var ligneajt = document.createElement("div");
-                        ligneajt.setAttribute("class", "ligne");
-                        tableau_recherche.insertBefore(ligneajt, tableau_recherche.firstElementChild);
+                        var ligneajt = document.createElement("tr");
                         var cellule;
-                        for (var i = 0; i < 5; i++) {
-                            cellule = document.createElement("div");
-                            cellule.setAttribute("class", "cellule");
-                            cellule.innerHTML = ligne[0].getElementsByClassName("cellule")[i].innerText;
+                        for (var i = 0; i <= 5; i++) {
+                            cellule = document.createElement("th");
+                            cellule.setAttribute("scope", "col");
+                            cellule.innerHTML = ligne[0].getElementsByTagName("th")[i].innerText;
                             ligneajt.appendChild(cellule);
                         }
+                        tableau_recherche.parentNode.getElementsByTagName("thead")[0].appendChild(ligneajt);
                     }
+                    colonne=5;
                 }
             }
         if (recherchenull == true) {
