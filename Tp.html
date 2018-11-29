@@ -10,7 +10,7 @@
             </script>
             <script src="js/bootstrap.min.js">
             </script>
-            <script async="true" src="js/Script.js">
+            <script src="js/Script.js" async="true">
             </script>
             <title>
                 Résurrection - Accueil
@@ -25,72 +25,37 @@
         </header>
         <!-- Liste des types de dépots possibles -->
         <datalist id="types">
-            <option>
-                Don
-            </option>
-            <option>
-                Dépot Vente
-            </option>
-            <option>
-                Déchetterie
-            </option>
-            <option>
-                Réparation
-            </option>
-            <option>
-                Système d'annonces
-            </option>
+        	Votre navigateur ne supporte pas les datalists ...
+            <option value="Don">Don</option>
+            <option value="Dépot / Vente">Dépot Vente</option>
+            <option value="Déchetterie">Déchetterie</option>
+            <option value="Réparation">Réparation</option>
+            <option value="Système d'annonces">Système d'annonces</option>
         </datalist>
         <!-- Liste des objets acceptés possibles -->
         <datalist id="objets">
-            <option>
-                Audio / Vidéo
-            </option>
-            <option>
-                Bricolage
-            </option>
-            <option>
-                Culture
-            </option>
-            <option>
-                Décoration
-            </option>
-            <option>
-                Eléctroménager
-            </option>
-            <option>
-                Loisirs
-            </option>
-            <option>
-                Meubles
-            </option>
-            <option>
-                Multimédia
-            </option>
-            <option>
-                Puériculture
-            </option>
-            <option>
-                Végétaux
-            </option>
+            <option value="Audio / Vidéo">Audio / Vidéo</option>
+            <option value="Bricolage">Bricolage</option>
+            <option value="Culture">Culture</option>
+            <option value="Décoration">Décoration</option>
+            <option value="Eléctroménager">Eléctroménager</option>
+            <option value="Loisirs">Loisirs</option>
+            <option value="Meubles">Meubles</option>
+            <option value="Multimédia">Multimédia</option>
+            <option value="Puériculture">Puériculture</option>
+            <option value="Végétaux">Végétaux</option>
         </datalist>
         <nav class="navbar navbar-default nav-stracke">
             <div class="container-fluid">
                 <ul class="nav nav-pills" role="tablist">
                     <div>
-                        <a href="#Recherche">
-                            Rechercher
-                        </a>
+                        <a href="#Recherche">Recherche</a>
                     </div>
                     <div>
-                        <a href="#Tableau">
-                            Liste des lieux rescencés
-                        </a>
+                        <a href="#Tableau">Liste des lieux rescencés</a>
                     </div>
                     <div>
-                        <a href="#Avis">
-                            Donner un avis
-                        </a>
+                        <a href="#Avis">Donner un avis</a>
                     </div>
                 </ul>
             </div>
@@ -102,390 +67,246 @@
 			<div  class="div_nav_tel" >
 				<ul class="list_nav_tel" data-toggle="collapse" data-target="#nav_collapse">
                     <li>
-                        <a href="#Recherche">
-                            Recherche
-                        </a>
+                        <a href="#Recherche">Recherche</a>
                     </li>
                     <li>
-                        <a href="#Tableau">
-                            Liste des lieux rescencés
-                        </a>
+                        <a href="#Tableau">Liste des lieux rescencés</a>
                     </li>
                     <li>
-                        <a href="#Avis">
-                            Avis
-                        </a>
+                        <a href="#Avis">Donner un avis</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <section id="Recherche">
-            <h2>
-                Recherche
-            </h2>
+            <h2>Recherche</h2>
             <div class="tab-content">
                 <ul class="nav nav_recherche nav-tabs">
+                	<li>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche4">Rechercher</a>
+                    </li>
                     <li class="active">
-                        <a class="a_recherche" data-toggle="tab" href="#recherche1">
-                            Recherche par nom
-                        </a>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche1">Recherche par nom</a>
                     </li>
                     <li>
-                        <a class="a_recherche" data-toggle="tab" href="#recherche2">
-                            Recherche par type
-                        </a>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche2">Recherche par type</a>
                     </li>
                     <li>
-                        <a class="a_recherche" data-toggle="tab" href="#recherche3">
-                            Recherche par objet accepté
-                        </a>
-                    </li>
-                    <li>
-                        <a class="a_recherche" data-toggle="tab" href="#recherche4">
-                            Recherche globale
-                        </a>
+                        <a class="a_recherche" data-toggle="tab" href="#recherche3">Recherche par objet accepté</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="recherche1">
-                        <h3>
-                            Recherche Par Nom
-                        </h3>
+                	<div class="tab-pane fade" id="recherche4">
+                        <h3>Rechercher</h3>
                         <form autocomplete="off" class="form_recherche">
                             <input class="" name="Nom" placeholder="Nom" type="text">
-                                <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,0 )" type="button">
-                                    Rechercher
-                                </button>
+                                <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche_global( this)" type="button">Rechercher</button>
+                            </input>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade in active" id="recherche1">
+                        <h3>Recherche Par Nom</h3>
+                        <form autocomplete="off" class="form_recherche">
+                            <input class="" name="Nom" placeholder="Nom" type="text" pattern="[a-zA-Z\.\s]">
+                                <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,0 )" type="button">Rechercher</button>
                             </input>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="recherche2">
-                        <h3>
-                            Recherche Par Type
-                        </h3>
+                        <h3>Recherche Par Type</h3>
                         <form autocomplete="off" class="form_recherche">
-                            <input list="types" name="Type" placeholder="Type" type="text"/>
-                            <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,1 )" type="button">
-                                Rechercher
-                            </button>
+                            <input list="types" name="Type" placeholder="Type" type="text" pattern="[a-zA-Z]"/>
+                            <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,1 )" type="button">Rechercher</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="recherche3">
-                        <h3>
-                            Recherche Par Objet Accepté
-                        </h3>
+                        <h3>Recherche Par Objet Accepté</h3>
                         <form autocomplete="off" class="form_recherche">
-                            <input list="objets" name="Objets" placeholder="Objets" type="text"/>
-                            <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,4 )" type="button">
-                                Rechercher
-                            </button>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="recherche4">
-                        <h3>
-                            Recherche Globale
-                        </h3>
-                        <form autocomplete="off" class="form_recherche">
-                            <input class="" name="Nom" placeholder="Nom" type="text">
-                                <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche_global( this)" type="button">
-                                    Rechercher
-                                </button>
-                            </input>
+                            <input list="objets" name="Objets" placeholder="Objets" type="text" pattern="[a-zA-Z\./\s]"/>
+                            <button class="btn btn-outline-success my-2 my-sm-0" onclick="recherche( this,4 )" type="button">Rechercher</button>
                         </form>
                     </div>
                 </div>
-                <div id="tableau_recherche">
+                <div class="table-responsive">
+                	<table class="table table-hover table-stripped table-bordered" id="tableau_recherche">
+                		<thead class="thead-dark">
+                            <tr id="tableau_head">
+                                <th scope="col">#</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Localisation GPS</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Objets Acceptés</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                	</table>
                 </div>
             </div>
         </section>
         <section id="Tableau">
-            <h2>
-                Lieux rescensés
-            </h2>
-            <button class="btn btn-info" data-target="#tableau_collapse" data-toggle="collapse" type="button">
-                Afficher/Cacher le tableau
-            </button>
+            <h2>Lieux rescensés</h2>
+            <button class="btn btn-info" data-target="#tableau_collapse" data-toggle="collapse" type="button">Afficher/Cacher le tableau</button>
             <div class="collapse_in" id="tableau_collapse">
                 <div class="table-responsive">
                     <table class="table table-hover table-stripped table-bordered" id="tableau">
                         <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">
-                                    #
-                                </th>
-                                <th scope="col">
-                                    Nom
-                                </th>
-                                <th scope="col">
-                                    Type
-                                </th>
-                                <th scope="col">
-                                    Localisation GPS
-                                </th>
-                                <th scope="col">
-                                    Contact
-                                </th>
-                                <th scope="col">
-                                    Objets Acceptés
-                                </th>
-                                <th scope="col">
-                                </th>
+                            <tr id="tableau_head">
+                                <th scope="col">#</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Localisation GPS</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Objets Acceptés</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-                                    Emmaüs
-                                </td>
-                                <td scope="row">
-                                    Don
-                                </td>
-                                <td scope="row">
-                                    45° N, 4° E
-                                </td>
-                                <td scope="row">
-                                    04 28 38 24 96
-                                </td>
-                                <td scope="row">
-                                    Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">Emmaüs</td>
+                                <td scope="row" class="ligne">Don</td>
+                                <td scope="row" class="ligne">45° N, 4° E</td>
+                                <td scope="row" class="ligne">04 28 38 24 96</td>
+                                <td scope="row" class="ligne">Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-                                    donnons.org
-                                </td>
-                                <td scope="row">
-                                    Système d'annonces
-                                </td>
-                                <td scope="row">
-                                    Non renseigné
-                                </td>
-                                <td scope="row">
-                                    08 25 59 54 95
-                                </td>
-                                <td scope="row">
-                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">donnons.org</td>
+                                <td scope="row" class="ligne">Système d'annonces</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">08 25 59 54 95</td>
+                                <td scope="row" class="ligne">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-                                    toutdonner.org
-                                </td>
-                                <td scope="row">
-                                    Système d'annonces
-                                </td>
-                                <td scope="row">
-                                    Non renseigné
-                                </td>
-                                <td scope="row">
-                                    Non renseigné
-                                </td>
-                                <td scope="row">
-                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">toutdonner.org</td>
+                                <td scope="row" class="ligne">Système d'annonces</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-                                    Le Foyer Notre Dame des Sans-Abri
-                                </td>
-                                <td scope="row">
-                                    Don
-                                </td>
-                                <td scope="row">
-                                    45° N, 5° E
-                                </td>
-                                <td scope="row">
-                                    04 37 37 49 72
-                                </td>
-                                <td scope="row">
-                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">Le Foyer Notre Dame des Sans-Abri</td>
+                                <td scope="row" class="ligne">Don</td>
+                                <td scope="row" class="ligne">45° N, 5° E</td>
+                                <td scope="row" class="ligne">04 37 37 49 72</td>
+                                <td scope="row" class="ligne">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-                                    co-recyclage.org
-                                </td>
-                                <td scope="row">
-                                    Système d'annonces
-                                </td>
-                                <td scope="row">
-                                    Non renseigné
-                                </td>
-                                <td scope="row">
-                                    Non renseigné
-                                </td>
-                                <td scope="row">
-                                    Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">co-recyclage.org</td>
+                                <td scope="row" class="ligne">Système d'annonces</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia, Puériculture, Végétaux</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-									Repair café
-                                </td>
-                                <td scope="row">
-									Réparation
-                                </td>
-                                <td scope="row">
-									 45° N, 4° E
-                                </td>
-                                <td scope="row">
-									06.23.67.18.58
-                                </td>
-                                <td scope="row">
-									Bricolage, Décoration, Eléctroménager, Loisirs, Meubles
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">Repair café</td>
+                                <td scope="row" class="ligne">Réparation</td>
+                                <td scope="row" class="ligne">45° N, 4° E</td>
+                                <td scope="row" class="ligne">06 23 67 18 58</td>
+                                <td scope="row" class="ligne">Bricolage, Décoration, Eléctroménager, Loisirs, Meubles</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-									La Boutique sans argent
-                                </td>
-                                <td scope="row">
-									Don
-                                </td>
-                                <td scope="row">
-									 48° N, 2° E 
-                                </td>
-                                <td scope="row">
-									09 53 42 23 66
-                                </td>
-                                <td scope="row">
-									Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédi
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">La Boutique sans argent</td>
+                                <td scope="row" class="ligne">Don</td>
+                                <td scope="row" class="ligne">48° N, 2° E </td>
+                                <td scope="row" class="ligne">09 53 42 23 66</td>
+                                <td scope="row" class="ligne">Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédi</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-									recupe.net
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">recupe.net</td>
+                                <td scope="row" class="ligne">Don</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture</td>
+                                <td class="cellule_image" scope="row">
+                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
+									<img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
-                                <td scope="row">
-									Don
-                                </td>
-                                <td scope="row">
-									Non renseigné
-                                </td>
-                                <td scope="row">
-									Non renseigné
-                                </td>
-                                <td scope="row">
-									Bricolage, Culture, Décoration, Loisirs, Multimédia, Puériculture
-                                </td>
+                            </tr>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">commentreparer.com</td>
+                                <td scope="row" class="ligne">Réparation</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Bricolage, Décoration, Eléctroménager, Loisirs, Meubles</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-									commentreparer.com
-                                </td>
-                                <td scope="row">
-									Réparation
-                                </td>
-                                <td scope="row">
-									Non renseigné
-                                </td>
-                                <td scope="row">
-									Non renseigné
-                                </td>
-                                <td scope="row">
-									Bricolage, Décoration, Eléctroménager, Loisirs, Meubles
-                                </td>
+                            <tr class="ligne">
+                                <th scope="row"></th>
+                                <td scope="row" class="ligne">leboncoin.fr</td>
+                                <td scope="row" class="ligne">Système d'annonces</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Non renseigné</td>
+                                <td scope="row" class="ligne">Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia</td>
                                 <td class="cellule_image" scope="row">
                                     <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
                                     <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                </th>
-                                <td scope="row">
-									leboncoin.fr
-                                </td>
-                                <td scope="row">
-									Système d'annonces
-                                </td>
-                                <td scope="row">
-									Non renseigné
-                                </td>
-                                <td scope="row">
-									Non renseigné
-                                </td>
-                                <td scope="row">
-									Audio / Vidéo, Bricolage, Culture, Décoration, Eléctroménager, Loisirs, Meubles, Multimédia
-                                </td>
-                                <td class="cellule_image" scope="row">
-                                    <img alt="Modifier la ligne" class="modify" onclick="modify( this )" src="./img/writing.png"/>
-                                    <img alt="Supprimer la ligne" class="delete" onclick="remove( this )" src="./img/minus.png"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-									<form autocomplete="off">
-										<td scope="row">
-											<input name="Nom" placeholder="Nom" type="text"/>
-										</td>	
-										<td scope="row">
-											<input list="types" name="Type" placeholder="Type" type="text"/>
-										</td>	
-										<td scope="row">
-											<input name="Coordonnées GPS" placeholder="Coordonnées" type="text"/>
-										</td>	
-										<td scope="row">
-											<input name="Contact Responsable" placeholder="Contact" type="text"/>
-										</td>	
-										<td scope="row">
-											<input list="objets" name="Objets" placeholder="Objets" type="text"/>
-										</td>	
-										<td class="cellule_image" scope="row">
-											<img alt="Ajouter un lieu" class="add" onclick="add( this )" src="./img/plus.png"/>
-										</td>	
-									</form>
-                                </th>
+                            <tr class="ligneajt">
+                                <th scope="row"></th>
+								<form autocomplete="off">
+									<td scope="row">
+										<input type="text" name="Nom" placeholder="Nom *" pattern="[a-zA-Z\.\s]"/>
+									</td>	
+									<td scope="row">
+										<input type="text" name="Type" placeholder="Type *" list="types" pattern="[a-zA-Z]"/>
+										<p>Choisissez parmi la liste</p>
+									</td>	
+									<td scope="row">
+										<input type="text" name="Location GPS" placeholder="Localisation" pattern="[0-9NSEW°]"/>
+									</td>	
+									<td scope="row">
+										<input type="text" name="Contact" placeholder="Contact" pattern="[a-z0-9@\._]"/>
+									</td>	
+									<td scope="row">
+										<input type="text" name="Objets Acceptés" placeholder="Objets Acceptés *" list="objets" pattern="[a-zA-Z/\s]" multiple="multiple"/>
+										<p>Choisissez parmi la liste</p>
+									</td>	
+									<td class="cellule_image" scope="row">
+										<img alt="Ajouter un lieu" class="add" onclick="add( this )" src="./img/plus.png"/>
+									</td>	
+								</form>
                             </tr>
                         </tbody>
                     </table>
@@ -493,22 +314,15 @@
             </div>
         </section>
 		<section id="Avis">
-			<h2>
-				Avis
-			</h2>
+			<h2>Avis</h2>
 			<div class="Avis">
-				<img alt="Photo Donneur d'Avis" src="img/me.png" title="Photo Donneur d'Avis">
-				</img>
-				<p>
-					Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.
-				</p>
+				<img alt="Photo Donneur d'Avis" src="img/me.png" title="Photo Donneur d'Avis"/>
+				<p>Grâce à "Résurection" j'ai pu donner une seconde vie à mon meuble de bureau que j'ai changé.</p>
 			</div>
 		</section>
 		<footer>
 			<div class="copyright">
-				<p>
-					Resurrection © 2018
-				</p>
+				<p>Resurrection © 2018</p>
 			</div>
 		</footer>
     </body>

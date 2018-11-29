@@ -1,11 +1,10 @@
 input {
-    width: 10rem;
+    width: 11rem;
 }
-.cellule, .cellule_image {
+.cellule_image {
     background-color: white;
     border: 1px solid black;
     color: black;
-    display: table-cell;
     width: 5%;
     vertical-align: middle;
     text-align: center;

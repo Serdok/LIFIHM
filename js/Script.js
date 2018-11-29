@@ -1,25 +1,19 @@
-var tableau = document.getElementById("tableau"); // Tableau de données 
-var head = document.getElementById( "tableau_head" ); // En-tête du tableau de données
+var tableau = document.getElementById("tableau"); // Tableau de données
+var thead = document.getElementById( "tableau_head" ); // En-tête du tableau de données
+var tbody = tableau.children[ 1 ]; // Ensemble de données
+var first = tbody.children[ 0 ]; // Première ligne de données
 
 var tableau_recherche = document.getElementById("tableau_recherche"); // Tableau résultat des recherches
+var tableau_recherche_head = tableau_recherche.children[ 0 ]; // En-tête du tableau résultat
+var tableau_recherche_body = tableau_recherche.children[ 1 ]; // Ensemble de données du tableau résultat
 
-var types = ["Don", "Dépôt vente", "Déchetterie"];
-var objets = ["Audio / Vidéo", "Bricolage", "Culture", "Décoration", "Electroménager", "Loisirs", "Meubles", "Multimédia", "Puériculture", "Végétaux"];
+var types = document.getElementById( "types" ); // Types de collecte d'objets
+var objets = document.getElementById( "objets" ); // Objets acceptés
 
-function getLigne(ligne) // Retourne le numéro de la ligne cliquée
-{
-    var parent = ligne.parentNode.parentNode;
-    var i = 0;
-    while (parent.previousElementSibling != null) {
-        parent = parent.previousElementSibling;
-        i++;
-    }
-    return i;
-}
 
+// Assigne un numéro de ligne aux lieux indexés
 function setLines()
 {
-	// On récupère chaque ligne du tableau
 	var lignes = tableau.getElementsByTagName( "tr" );
 	for (var i=1 ; i<lignes.length ; ++i)
 	{
@@ -27,182 +21,331 @@ function setLines()
 	}
 }
 
-function remove(ligne) // Supprime une ligne
+// Retourne le numéro de la ligne passée en paramètre
+function getLine( line )
 {
-    var nb = getLigne(ligne);
-    tableau.removeChild(ligne.parentNode.parentNode);
-    alert("Ligne " + nb + " supprimée!");
+	if (line.localName == "tr")
+		var parent = line;
+	else if (line.localName == "th")
+		var parent = line.parentNode;
+	else
+		var parent = line.parentNode.parentNode;
+
+	var cpt = 1;
+	while (parent != first)
+	{
+		parent = parent.previousElementSibling;
+		++cpt;
+	}
+
+	return cpt;
 }
 
-function modify(ligne) // Modifie une ligne du tableau
+// Supprime la ligne du tableau passé en paramètre
+function remove( line )
 {
-    var parent = ligne.parentNode.parentNode; // Contient la ligne à modifier
-    var fils = parent.children; // Contient le tableau des cellules à l'intérieur
-    var nb = getLigne(ligne);
-    if (parent.className == "ligne") // Modification activée
-    {
-        console.log("Modification de la ligne " + nb + " activée");
-        var formulaire, cellule, cellule_image;
-        formulaire = document.createElement("form"); // On crée une balise <div>
-        formulaire.setAttribute("class", "lignemdf"); // Qui a pour classe "lignemdf"
-        for (var i = 0; i < fils.length - 1; i++) {
-            cellule = document.createElement("div"); // On crée une balise <div>
-            cellule.setAttribute("class", "cellule"); // Qui a pour classe "cellule"
-            switch (tableau.children[0].children[i].innerHTML) // selon le texte de la première ligne du tableau
-            {
-                case "Type": // On ajoute l'autocomplétion des types
-                    cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' list = 'types'/>";
-                    break;
-                case "Objets acceptés": // On ajoute l'autocomplétion des objets acceptés
-                    cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' list = 'objets'/>";
-                    break;
-                default: // Cas par défaut
-                    cellule.innerHTML = "<input type = 'text' name = '" + tableau.children[0].children[i].innerHTML + "' placeholder = '" + fils[i].innerHTML + "' >";
-            }
-            formulaire.appendChild(cellule); // On ajoute la <div> cellule dans la <div> formulaire
-        }
-        cellule_image = document.createElement("div");
-        cellule_image.setAttribute("class", "cellule_image");
-        cellule_image.innerHTML = "<img src = './img/check.png' alt='Modifier lieu' class = 'done' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png'  alt='Supprime lieu'  class = 'delete' onClick = 'remove( this )'/>";
-        formulaire.appendChild(cellule_image); // On ajoute la <div> cellule_image dans la <div> formulaire
-        tableau.replaceChild(formulaire, parent); // On remplace la ligne par le formulaire
-    } else if (parent.className == "lignemdf") // Modifications terminées
-    {
-        console.log("Enregistrement des modifications de la ligne " + nb);
-        var inputs = parent.getElementsByTagName("input"); // On récupère le tableau des inputs de la ligne modifiée
-        var modifications, cellule, cellule_image;
-        modifications = document.createElement("div"); // On crée une <div>
-        modifications.setAttribute("class", "ligne"); // Qui a pour classe "ligne"
-        for (var i = 0; i < fils.length - 1; i++) // Pour i allant de 0 au nombre de cellules fils (cellule_image exclus)
-        {
-            cellule = document.createElement("div");
-            cellule.setAttribute("class", "cellule");
-            if (inputs[i].value == "") // Si rien a été entré (aucune modification)
-                cellule.innerHTML = inputs[i].placeholder;
+	var parent = line.parentNode.parentNode;
+	var nb = getLine( parent );
+
+	// Suppression de la ligne
+	tbody.removeChild( parent );
+	console.log( "Ligne " + nb + " supprimée" );
+
+	// Mise à jour des lignes
+	setLines();
+
+	alert( "Ligne " + nb + " supprimée!" );
+}
+
+// Modifie la ligne du tableau passée en paramètre
+function modify( line )
+{
+	var parent = line.parentNode.parentNode;
+	console.log( parent );
+	var nb = getLine( parent );
+	var cases = parent.cells;
+
+	// On active la modification
+	if (parent.className == "ligne")
+	{
+		console.log( "Modification de la ligne " + nb + " activée" );
+		var formulaire, cellule, cellule_image;
+
+		// Crée une nouvelle ligne
+		formulaire = document.createElement( "tr" );
+		formulaire.setAttribute( "class", "lignemdf" );
+
+		// On ajoute le numero de ligne à la ligne
+		formulaire.appendChild( cases[ 0 ] );
+
+
+		for (var i=0 ; i<cases.length-1 ; ++i)
+		{
+			cellule = document.createElement( "td" );
+			cellule.setAttribute( "scope", "row" );
+			switch (thead.cells[ i ].innerHTML)
+			{
+				case "Type":
+					cellule.innerHTML = "<input type='text' name='" + thead.cells[ i ].innerHTML + "' placeholder=\"" + cases[ i ].innerHTML + "\" list='types'/>"
+					break;
+
+				case "Objets Acceptés":
+					cellule.innerHTML = "<input type='text' name='" + thead.cells[ i ].innerHTML + "' placeholder=\"" + cases[ i ].innerHTML + "\" list='objets' multiple='multiple'/>"
+					break;
+
+				default:
+					cellule.innerHTML = "<input type='text' name='" + thead.cells[ i ].innerHTML + "' placeholder=\"" + cases[ i ].innerHTML + "\"/>"
+			}
+
+			// On ajoute la cellule crée dans la ligne
+			formulaire.appendChild( cellule );
+		}
+
+		// On crée la case avec les images
+		cellule_image = document.createElement( "td" );
+		cellule_image.setAttribute( "class", "cellule_image" );
+		cellule_image.innerHTML = "<img alt='Enregister les modifications' class='done' onClick='modify( this )' src='./img/check.png'/>\n\t\t\t\t\t\t\t\t\t<img alt='Supprimer la ligne' class='delete' onClick='remove( this )' src='./img/minus.png'/>";
+		// On ajoute la cellule image crée dans la ligne
+		formulaire.appendChild( cellule_image );
+
+		// On remplace la ligne par le formulaire crée
+		tbody.replaceChild( formulaire, parent );
+	}
+	else if (parent.className == "lignemdf") // On enregistre les modifications
+	{
+		console.log( "Modifcations de la ligne " + nb + " enregistées" );
+		var inputs = parent.getElementsByTagName( "input" );
+		var modifications, cellule, cellule_image;
+
+		// On vérifie que les données saisies sont correctes
+		if (checkValues( inputs[ 1 ], inputs[ 2 ], inputs[ 3 ], inputs[ 4 ] ))
+			return;
+
+		// On crée une nouvelle ligne
+		modifications = document.createElement( "tr" );
+		modifications.setAttribute( "class", "ligne" );
+
+		// On ajoute le numéro de la ligne à la ligne
+		modifications.appendChild( cases[ 0 ] );
+
+		for (var i=0 ; i<cases.length-1 ; ++i)
+		{
+			cellule = document.createElement( "td" );
+            cellule.setAttribute( "scope", "row" );
+            if (inputs[ i ].value == "") // Si rien a été entré (aucune modification)
+                cellule.innerHTML = inputs[ i ].placeholder;
             else // Si quelque chose a été entré
-                cellule.innerHTML = inputs[i].value;
+                cellule.innerHTML = inputs[ i ].value;
+
             modifications.appendChild(cellule);
-        }
-        cellule_image = document.createElement("div");
-        cellule_image.setAttribute("class", "cellule_image");
-        cellule_image.innerHTML = "<img src = './img/writing.png' alt='Modifier lieu' class = 'modify' onClick = 'modify( this )'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png'  alt='Supprime lieu'  class = 'delete' onClick = 'remove( this )'/>";
+		}
+
+		cellule_image = document.createElement( "td" );
+        cellule_image.setAttribute( "class", "cellule_image" );
+        cellule_image.setAttribute( "scope", "row" );
+        cellule_image.innerHTML = "<img alt='Modifier la ligne' class='modify' onclick='modify( this )' src='./img/writing.png'/>\n\t\t\t\t\t\t\t\t\t<img alt='Supprimer la ligne' class='delete' onclick='remove( this )' src='./img/minus.png'/>";
         modifications.appendChild(cellule_image);
-        tableau.replaceChild(modifications, parent); // On remplace le formulaire par la ligne modifiée
-        alert("Ligne " + nb + " modifiée!");
+        
+        tbody.replaceChild( modifications, parent ); // On remplace le formulaire par la ligne modifiée
+
+        alert( "Ligne " + nb + " modifiée!" );
     }
 }
 
-function add(ligne) // Ajoute une ligne à la fin du tableau
+// Ajoute la ligne passée en paramètre au tableau
+function add( line )
 {
-    var inputs = ligne.parentNode.parentNode.getElementsByTagName("input"); // On récupère les inputs de la dernière ligne
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].value == "") // Si rien a été entré
-        {
-            console.log(inputs[i].name + " a son champ vide!");
-            alert("Merci de compléter le champ " + inputs[i].name + " avant d'ajouter cette ligne!");
-            inputs[i].focus(); // On place le curseur dans la case vide
-            return false; // On quitte la fonction s'il y a une case vide
-        }
-    }
-    var ligneajt = document.createElement("div");
-    ligneajt.setAttribute("class", "ligne");
-    tableau.insertBefore(ligneajt, tableau.lastElementChild); // On insère la ligne ajoutée avant la dernière (formulaire d'ajout)
-    var cellule, cellule_image;
-    for (var i = 0; i < inputs.length; i++) {
-        cellule = document.createElement("div");
-        cellule.setAttribute("class", "cellule");
-        cellule.innerHTML = inputs[i].value;
-        ligneajt.appendChild(cellule);
-        inputs[i].value = ""; // On clear la valeur de l'input
-    }
-    cellule_image = document.createElement("div");
-    cellule_image.setAttribute("class", "cellule_image");
-    cellule_image.innerHTML = "<img src = './img/writing.png' alt='Modifier lieu' class = 'modify' onClick = 'modify( this )' style='height: 60%; padding: 10px 0px 10px 0px;'/></br>\n\t\t\t\t\t\t\t<img src = './img/minus.png'  alt='Supprime lieu' class = 'delete' onClick = 'remove( this )' style='height: 60%; padding: 10px 0px 10px 0px;' />";
-    ligneajt.appendChild(cellule_image);
-    alert("Ligne ajoutée!");
+	var parent = line.parentNode.parentNode;
+	console.log( parent );
+	var inputs = parent.getElementsByTagName( "input" );
+	for (var i=0 ; i<inputs.length ; ++i)
+	{
+		switch (inputs[ i ].name)
+		{
+			case "Nom":
+			case "Type":
+			case "Objets Acceptés":
+				if (inputs[ i ].value == "")
+				{
+					console.log( "Champ obligatoire vide, retour à l'entrée des données ..." );
+					alert( "Le champ obligatoire " + inputs[ i ].name + " est vide!" );
+					inputs[ i ].focus();
+					return;
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	// On vérifie que les données saisies sont correctes
+	if (checkValues( inputs[ 1 ], inputs[ 2 ], inputs[ 3 ], inputs[ 4 ] ))
+		return;
+
+	var ligneajt = document.createElement( "tr" );
+	ligneajt.setAttribute( "class", "ligne" );
+
+	var clone = parent.children[ 0 ].cloneNode();
+	ligneajt.appendChild( clone );
+
+	var cellule, cellule_image;
+	for (var i=0 ; i<inputs.length ; ++i)
+	{
+		cellule = document.createElement( "td" );
+		cellule.setAttribute( "scope", "row" );
+		cellule.setAttribute( "class", "ligne" );
+		cellule.innerHTML = (inputs[ i ].value == "") ? "Non renseigné" : inputs[ i ].value;
+
+		ligneajt.appendChild( cellule );
+		inputs[ i ].value = "";
+	}
+
+	cellule_image = document.createElement( "td" );
+	cellule_image.setAttribute( "class", "cellule_image" );
+	cellule_image.setAttribute( "scope", "row" );
+	cellule_image.innerHTML = "<img alt='Modifier la ligne' class='modify' onclick='modify( this )' src='./img/writing.png'/>\n\t\t\t\t\t\t\t\t\t<img alt='Supprimer la ligne' class='delete' onclick='remove( this )' src='./img/minus.png'/>";
+
+	ligneajt.appendChild( cellule_image );
+	console.log( ligneajt );
+
+	tbody.insertBefore( ligneajt, tbody.lastElementChild );
+
+	setLines();
+
+	console.log( "Une ligne a été ajoutée" );
+	alert( "Ligne ajoutée!" );
 }
 
-function recherche(ligne, colonne) // Recherche par nom d'abord
+// Vérifie les données saisies
+function checkValues( type, localisation, contact, objet )
+{
+	var numbers = /\d/g;
+	var letters = /[A-Za-z]/g;
+
+	console.log( "Checking values" );
+
+	console.log( type.value.match( numbers ) );
+	if (type.value.match( numbers ) != null)
+	{
+		console.log( "Mauvaise saisie du type" );
+		alert( "On ne s'attend pas à des chiffres dans la case type ..." );
+		type.focus();
+		return true;
+	}
+
+	console.log( localisation.value.match( /\d+° N|S, \d+° E|W/ ) + localisation.value != "Non renseigné" + localisation.value != "");
+	if (localisation.value.match( /\d+° N|S, \d+° E|W/ ) == null && localisation.value != "Non renseigné" && localisation.value != "")
+	{
+		console.log( "Mauvaise saisie de la localisation" );
+		alert( "Le format de la localisation est mauvais. Exemple : 45° N, 4° E est valide.\nLaissez la case vide si vous ne connaissez pas la localisation." );
+		localisation.focus();
+		return true;
+	}
+
+	console.log( contact.value.match( /@[a-z]+\./ ) + contact.value.match( /\d\d \d\d \d\d \d\d \d\d/ ) + contact.value != "Non renseigné" + contact.value != "" );
+	if (contact.value.match( /@[a-z]+\./ ) == null && contact.value.match( /\d\d \d\d \d\d \d\d \d\d/ ) == null && contact.value != "Non renseigné" && contact.value != "")
+	{
+		console.log( "Mauvaise saisie du contact" );
+		alert( "Le format du contact est mauvais. Un numéro de téléphone à 10 chiffres ou une adresse mail est attendue.\nLaissez la casese vide si vous ne connaissez pas le moyen de contact." );
+		contact.focus();
+		return true;
+	}
+
+	console.log( objet.value.match( numbers ) );
+	if (objet.value.match( numbers ) != null)
+	{
+		console.log( "Mauvaise saisie de l'objet" );
+		alert( "On ne s'attend pas à des chiffres dans la case objet acceptés ..." );
+		objet.focus();
+		return true;
+	}
+
+	return false;
+}
+
+function recherche(ligne, colonne)
 {
     var inputs = ligne.parentNode.parentNode.getElementsByTagName("input");
-    var ligne = tableau.getElementsByClassName("ligne"); //Toutes les lignes du tableau
+    var ligne = tableau.getElementsByTagName("tr"); //Toutes les lignes du tableau
     var recherchenull = true; //Boolean pour sa voir si les recherche sont nulle
-    for (var i = tableau_recherche.childNodes.length - 1; i > 0; i--) tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+    for (var i = tableau_recherche_body.childNodes.length - 1; i > 0; i--)
+        tableau_recherche_body.removeChild(tableau_recherche.childNodes[i]);
+    try{
+        tableau_recherche.parentNode.getElementsByTagName("thead")[0].removeChild(tableau_recherche.parentNode.getElementsByTagName("thead")[0].childNodes  [0]);
+    }
+    catch(ex){
+
+    }
     if (inputs[0].value == "") // Si rien a été entré
         alert("Merci de compléter le champ avant de lancer une recherche!");
     else {
-        for (var nb = ligne.length; nb > 0; nb--) {
+        for (var nb = 1; nb < ligne.length; nb++) {
             var recherche = new RegExp(inputs[0].value.toUpperCase());
-            if (ligne[nb].getElementsByClassName("cellule")[colonne].innerText.toUpperCase().match(recherche) != null) {
-                var ligneajt = document.createElement("div");
-                ligneajt.setAttribute("class", "ligne");
-                tableau_recherche.insertBefore(ligneajt, tableau_recherche.lastElementChild);
+            if (ligne[nb].getElementsByTagName("td")[colonne].innerText.toUpperCase().match(recherche) != null) {
+                var ligneajt = document.createElement("tr");
+                tableau_recherche_body.insertBefore(ligneajt, null);
                 var cellule;
+                cellule = document.createElement("th");
+                cellule.innerHTML = ligne[nb].getElementsByTagName("th")[0].innerText;
+           		cellule.setAttribute("scope", "row");
+                ligneajt.appendChild(cellule);
                 for (var i = 0; i < 5; i++) {
-                    cellule = document.createElement("div");
-                    cellule.setAttribute("class", "cellule");
-                    cellule.innerHTML = ligne[nb].getElementsByClassName("cellule")[i].innerText;
+                    cellule = document.createElement("td");
+               		cellule.setAttribute("scope", "row");
+                    cellule.innerHTML = ligne[nb].getElementsByTagName("td")[i].innerText;
                     ligneajt.appendChild(cellule);
                 }
-                if (recherchenull == true) {
+                if (recherchenull == true)
                     recherchenull = false;
-                    var ligneajt = document.createElement("div");
-                    ligneajt.setAttribute("class", "ligne");
-                    tableau_recherche.insertBefore(ligneajt, tableau_recherche.firstElementChild);
-                    var cellule;
-                    for (var i = 0; i < 5; i++) {
-                        cellule = document.createElement("div");
-                        cellule.setAttribute("class", "cellule");
-                        cellule.innerHTML = ligne[0].getElementsByClassName("cellule")[i].innerText;
-                        ligneajt.appendChild(cellule);
-                    }
-                }
             }
         }
+        tableau_recherche.style.display = "initial";
         if (recherchenull == true) {
             alert("Désolé aucun résultat n'a été trouvé pour votre recherche...");
         }
     }
 }
 
-function recherche_global(ligne) // Recherche par nom d'abord
+function recherche_global(ligne)
 {
     var inputs = ligne.parentNode.parentNode.getElementsByTagName("input");
-    var ligne = tableau.getElementsByClassName("ligne"); //Toutes les lignes du tableau
+    var ligne = tableau.getElementsByTagName("tr"); //Toutes les lignes du tableau
     var recherchenull = true; //Boolean pour sa voir si les recherche sont nulle
-    for (var i = tableau_recherche.childNodes.length - 1; i > 0; i--) tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+    for (var i = tableau_recherche_body.childNodes.length - 1; i > 0; i--) tableau_recherche.removeChild(tableau_recherche.childNodes[i]);
+    try{
+        tableau_recherche.parentNode.getElementsByTagName("thead")[0].removeChild(tableau_recherche.parentNode.getElementsByTagName("thead")[0].childNodes  [0]);
+    }
+    catch(ex){
+
+    }
     if (inputs[0].value == "") // Si rien a été entré
         alert("Merci de compléter le champ avant de lancer une recherche!");
     else {
-        for (var nb = ligne.length; nb > 0; nb--)
-            for (var colonne = 0; colonne < 4; colonne++) {
+        for (var nb = 1; nb < ligne.length; nb++)
+            for (var colonne = 0; colonne <=4; colonne++) {
                 var recherche = new RegExp(inputs[0].value.toUpperCase());
-                if (ligne[nb].getElementsByClassName("cellule")[colonne].innerText.toUpperCase().match(recherche) != null) {
-                    var ligneajt = document.createElement("div");
-                    ligneajt.setAttribute("class", "ligne");
-                    tableau_recherche.insertBefore(ligneajt, tableau_recherche.lastElementChild);
+                if (ligne[nb].getElementsByTagName("td")[colonne].innerText.toUpperCase().match(recherche) != null) {
+                    var ligneajt = document.createElement("tr");
+                    tableau_recherche.insertBefore(ligneajt, null);
                     var cellule;
+                    cellule = document.createElement("th");
+                    cellule.innerHTML = ligne[nb].getElementsByTagName("th")[0].innerText;
+                    cellule.setAttribute("scope", "row");
+                    ligneajt.appendChild(cellule);
                     for (var i = 0; i < 5; i++) {
-                        cellule = document.createElement("div");
-                        cellule.setAttribute("class", "cellule");
-                        cellule.innerHTML = ligne[nb].getElementsByClassName("cellule")[i].innerText;
+                        cellule = document.createElement("td");
+                        cellule.setAttribute("scope", "row");
+                        cellule.innerHTML = ligne[nb].getElementsByTagName("td")[i].innerText;
                         ligneajt.appendChild(cellule);
                     }
-                    if (recherchenull == true) {
+
+                    if (recherchenull == true)
                         recherchenull = false;
-                        var ligneajt = document.createElement("div");
-                        ligneajt.setAttribute("class", "ligne");
-                        tableau_recherche.insertBefore(ligneajt, tableau_recherche.firstElementChild);
-                        var cellule;
-                        for (var i = 0; i < 5; i++) {
-                            cellule = document.createElement("div");
-                            cellule.setAttribute("class", "cellule");
-                            cellule.innerHTML = ligne[0].getElementsByClassName("cellule")[i].innerText;
-                            ligneajt.appendChild(cellule);
-                        }
-                    }
+                    colonne=5;
                 }
             }
+        tableau_recherche.style.display = "initial";
         if (recherchenull == true) {
             alert("Désolé aucun résultat n'a été trouvé pour votre recherche...");
         }
